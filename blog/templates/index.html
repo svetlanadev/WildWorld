@@ -1,10 +1,18 @@
-    <html>
-        <head>
-            <title>WildWorld</title>
-        </head>
-        <body>
-            <p>Hi there!</p>
-            <p>It works!</p>
-        </body>
-    </html>
-    <ul><li>First post</li><li>Second post</li><li>Third post</li></ul>
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Blog home page</h1>
+<h2>{{ title | upper }}</h2>
+<p><b>{{ boldmessage | addslashes}}</b></p>
+
+
+{% lorem 4 p random %}
+{% for article in article_list %}
+	<div>
+		<h2><a href="https://www.python.org">
+		{{ article.title }}
+		</a></h2>
+			{% lorem 1 p random %}
+	</div>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends "blog_index.html" %}
+
+{% block title %}
+	{{ tag.title }} - {{ block.super }}
+{% endblock %}
+
+{% block content %}
+	{{ tag.title }}
+	{{ tag.text}}
+	{{ block.super}}
+
+{% endblock %}

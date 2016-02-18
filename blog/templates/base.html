@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>WildWorld</title>
+	</head>
+
+	<body>
+		{% block head %}
+			{% block title %} {% endblock %}
+			{% block menu %} {% endblock %}
+		{% endblock %}
+
+		{% block page %}
+			{% block content %}
+			{% endblock %}
+		{% endblock %}
+
+		{% block footer %}
+			{% block copyright %}
+			{% endblock %}
+		{% endblock %}
+	</body>
+</html>
