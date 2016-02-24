@@ -7,6 +7,5 @@ urlpatterns = [
 	url(r'^$', views.index, name = 'blog')
 ]
 
-
 #urlpatterns = patterns('',
 #	url(r'^$', 'views.index', name = 'index'))

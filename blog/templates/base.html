@@ -1,12 +1,14 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>WildWorld</title>
+		<title>{% block title %} SITE NAME {% endblock %}</title>
+		<link rel="stylesheet" type="text/css" href="{% static 'blog/css/style.css' %}" />
 	</head>
 
 	<body>
 		{% block head %}
-			{% block title %} {% endblock %}
+			{% block htitle %} {% endblock %}
 			{% block menu %} {% endblock %}
 		{% endblock %}
 
@@ -21,3 +23,5 @@
 		{% endblock %}
 	</body>
 </html>
+
+

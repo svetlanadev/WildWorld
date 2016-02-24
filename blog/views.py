@@ -4,6 +4,11 @@ import datetime
 
 class MyStruct(object):
 		pass
+
+def home_page(request):
+    return HttpResponse('<html><title>Blog lists</title>Hello Blog <br> "You must be joking!" I can hear you say.</html>')
+
+
 def index(request):
 	c = MyStruct()
 	c.company = 'Cool Star'
@@ -13,7 +18,9 @@ def index(request):
 	c.article_list = [{'title':'Title1', 'text':'Text1'},
 		{'title':'Title2', 'text':'Text2'},
 		{'title':'Title3', 'text':'Text3'}]
-	return render(request, 'index.html', c.__dict__)
+	return render(request, 'blog_index.html', c.__dict__)
+
+
 
 #def index(request):
 #	context_dict = {'title': "It's my blog", 'boldmessage': "I'm bold font from the context"}

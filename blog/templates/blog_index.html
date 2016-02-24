@@ -1,9 +1,20 @@
 {% extends "blog_base.html" %}
 
+
 {% block content %}
-	{% for article in article_list %}
-		<a href="{% url article_view article}">
-		{{ article.title}}
-		</a>
-	{% endfor %}
+<h1>Blog home page</h1>
+<h2>{{ title | upper }}</h2>
+<p><b>{{ boldmessage | addslashes}}</b></p>
+
+
+{% lorem 4 p random %}
+{% for article in article_list %}
+	<div>
+		<h2><a href="https://www.python.org">
+		{{ article.title }}
+		</a></h2>
+			{% lorem 1 p random %}
+	</div>
+{% endfor %}
 {% endblock %}
+(% template %}
