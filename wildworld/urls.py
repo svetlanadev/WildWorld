@@ -22,9 +22,10 @@ from django.conf import settings
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'', include('blog.urls')),
-#	url(r'^$', 'blog.views.home_page', name = 'home')
-#	url(r'^$', TemplateView.as_view(template_name='index.html'), name = 'home')
+#	url(r'^$', TemplateView.as_view(template_name='index.html'), name = 'home'),
+#	url(r'^about/', AboutView.as_view()),
 ]
 
+#	url(r'^$', 'blog.views.home_page', name = 'home')
 
 
