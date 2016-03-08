@@ -4,16 +4,17 @@
 {% block content %}
 <h1>Blog home page</h1>
 <h2>{{ title | upper }}</h2>
-<p><b>{{ boldmessage | addslashes}}</b></p>
+<!-- <p><b>{{ boldmessage | addslashes}}</b></p> -->
+<p><a href="sveta_contact">Contact here</a></p>
+<p><a href="admin">Admin</a></p>
 
 
-{% lorem 4 p random %}
-{% for article in article_list %}
+
+
+{% for article in articles %}
 	<div>
-		<h2><a href="https://www.python.org">
-		{{ article.title }}
-		</a></h2>
-			{% lorem 1 p random %}
+		<h2>{{ article.title }}</h2>
+		<a href="post/{{ article.id }}">Read me >> </a>
 	</div>
 {% endfor %}
 {% endblock %}

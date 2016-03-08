@@ -4,6 +4,7 @@ from django.db import models
 
 class Category(models.Model):
 	name = models.CharField(max_length=128, unique=True)
+#	slug = models.SlugField(unique=True)
 
 #	def __str__(self):
 #		return self.name
@@ -13,6 +14,7 @@ class Category(models.Model):
 
 class Post(models.Model):
 	category = models.ForeignKey(Category)
+#	author = models.ForeignKey(User)
 	title = models.CharField(max_length=128)
 	body = models.TextField()
 	url = models.URLField()
