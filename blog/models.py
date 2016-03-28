@@ -16,6 +16,7 @@ class Post(models.Model):
 	category = models.ForeignKey(Category)
 #	author = models.ForeignKey(User)
 	title = models.CharField(max_length=128)
+#	slug = models.SlugField(unique=True)
 	body = models.TextField()
 	url = models.URLField()
 	views = models.IntegerField(default=0)
