@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 import datetime
 #from blog.models import TemplateView
-from blog.models import Post
+from blog.models import Post, Category
 
 class MyStruct(object):
 		pass
@@ -13,11 +13,19 @@ def home_page(request):
 
 def index(request):
 	posts = Post.objects.all()
-	return render(request, 'blog_index.html', {'articles' : posts})
+	categories = Category.objects.all()
+	return render(request, 'blog_index.html', {'articles' : posts, 'categories' : categories})
 
 
 def sveta_contact(request):
 	return render(request, 'sveta_contact.html',)
+
+def all_categories(request):
+	categories = Category.objects.all()
+	return render(request, 'all_categories.html', {'categories' : categories})
+
+def category_link(request):
+	return render(request, 'blog_index.html', {'article' : post})
 
 
 def post(request, post_num):

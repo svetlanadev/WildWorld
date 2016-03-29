@@ -1,12 +1,25 @@
-<html>
+{% extends "blog_index.html" %}
+<!-- <html>
 <head>
 	<title></title>
 </head>
 <body>
 
-<h2>Post title:{{ article.title }}</h2>
+<h2>Post title: {{ article.title }}</h2>
 <div>
-	Post body:{{ article.body }}	
+	Post body: {{ article.body }}	
 </div>
 </body>
-</html>
+</html> -->
+
+
+{% block content %}
+        <div id="post">
+                <h2>Post title: {{ article.title }}</h2>
+                <p>Body: {{ article.body }}</p>
+<!--                 <p>Category: <a href="blog/all_categories/{{ post.category.id }}/">
+                   {{ post.category }}</a></p> -->
+        </div>
+{% endblock %}
+
+<!-- <p><a href="sveta_contact">Contact here</a></p> -->

@@ -17,10 +17,15 @@
 <!-- <p><b>{{ boldmessage | addslashes}}</b></p> -->
 <p><a href="sveta_contact">Contact here</a></p>
 <p><a href="admin">Admin</a></p>
+<p><a href="all_categories">All categories here</a></p>
 
-
-
-
+-----------------------------------------------
+<p> All Categories </p>
+{% for category in categories %}
+	<a href="category/{{category.name}}">{{category.name}}</a>
+{% endfor %}
+<br/>
+-----------------------------------------------
 {% for article in articles %}
 	<div>
 		<h2>{{ article.title }}</h2>
