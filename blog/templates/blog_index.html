@@ -18,6 +18,7 @@
 <p><a href="sveta_contact">Contact here</a></p>
 <p><a href="admin">Admin</a></p>
 <p><a href="all_categories">All categories here</a></p>
+<!-- <h2>{{html}}</h2> -->
 
 -----------------------------------------------
 <p> All Categories </p>
@@ -26,11 +27,22 @@
 {% endfor %}
 <br/>
 -----------------------------------------------
-{% for article in articles %}
+<!-- {% for article in articles %}
 	<div>
 		<h2>{{ article.title }}</h2>
 		<a href="post/{{ article.id }}">Read me >> </a>
+	</div> -->
+<!-- {% endfor %} -->
+
+
+
+{% for x in lamps %}
+	<div>
+		<h2>{{ x.title }}</h2>
+		<a href="post/{{x.id}}">Read me >> </a>
 	</div>
 {% endfor %}
+
 {% endblock %}
+
 (% template %}

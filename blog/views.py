@@ -14,7 +14,7 @@ def home_page(request):
 def index(request):
 	posts = Post.objects.all()
 	categories = Category.objects.all()
-	return render(request, 'blog_index.html', {'articles' : posts, 'categories' : categories})
+	return render(request, 'blog_index.html', {'lamps' : posts, 'categories' : categories})
 
 
 def sveta_contact(request):
@@ -31,7 +31,13 @@ def category_link(request):
 def post(request, post_num):
 	post = Post.objects.get(id=post_num)
 	# post = {'title' : 'myTitle', 'body' : 'my body'}
-	return render(request, 'post.html', {'article' : post})
+	return render(request, 'post.html', {'banana' : post})
+
+
+# def current_datetime(request):
+# 	now = datatime.datatime.now()
+# 	html = "<html><body>It is now %s.</body></html>" % now
+# 	return HttpResponse(html)
 
 
 
