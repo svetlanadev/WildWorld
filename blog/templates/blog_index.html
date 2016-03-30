@@ -17,15 +17,14 @@
 <!-- <p><b>{{ boldmessage | addslashes}}</b></p> -->
 <p><a href="sveta_contact">Contact here</a></p>
 <p><a href="admin">Admin</a></p>
-<p><a href="all_categories">All categories here</a></p>
-<!-- <h2>{{html}}</h2> -->
 
 -----------------------------------------------
-<p> All Categories </p>
-{% for category in categories %}
-	<a href="category/{{category.name}}">{{category.name}}</a>
+<p>Hello, Django. All categories</p>
+{% for z in category_sequence %}
+	<div>
+		<a href="category/{{z.name}}">{{ z.name }}</a>
+	</div>
 {% endfor %}
-<br/>
 -----------------------------------------------
 <!-- {% for article in articles %}
 	<div>
@@ -34,15 +33,19 @@
 	</div> -->
 <!-- {% endfor %} -->
 
-
-
 {% for x in lamps %}
 	<div>
 		<h2>{{ x.title }}</h2>
 		<a href="post/{{x.id}}">Read me >> </a>
 	</div>
 {% endfor %}
+-------------------------------------------------
+<!-- {% for xy in allpoems}
+	<div>
+		<h2>{{ xy.title }}</h2>
+		<a href="poems/{{xy.id}}">more</a>
+	</div> -->
 
 {% endblock %}
 
-(% template %}
+

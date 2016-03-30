@@ -1,25 +1,19 @@
 {% extends "blog_index.html" %}
-<!-- <html>
-<head>
-	<title></title>
-</head>
-<body>
 
-<h2>Post title: {{ article.title }}</h2>
-<div>
-	Post body: {{ article.body }}	
-</div>
-</body>
-</html> -->
 
 
 {% block content %}
+		<div>
+			<p>Category: <a href="category/{{categoryItem.name}}">more</a></p> 
+		</div>
+
         <div id="post">
-                <h2>Post title: {{ banana.title }}</h2>
+                <h2>Post title: {{ banana.title }}</h2>               
                 <p>Body: {{ banana.body }}</p>
-<!--                 <p>Category: <a href="blog/all_categories/{{ post.category.id }}/">
-                   {{ post.category }}</a></p> -->
+                <p>Created: {{banana.created}}</p>
         </div>
 {% endblock %}
 
-<!-- <p><a href="sveta_contact">Contact here</a></p> -->
+<!-- 
+                <p>Category: <a href="/blog/categories/{{ post.category.id }}/">
+                   {{ post.category }}</a></p> -->
