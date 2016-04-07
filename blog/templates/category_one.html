@@ -2,6 +2,15 @@
 {% block content %}
 <div>
 	<h2>Hello, Django!</h2>
-	<h2>{{categoryItem.name}}</h2>
+	<h2>Категорія:{{categoryItem.name}}</h2>
+
+
+{% for x in lamps %}
+	<div>
+		<h2>{{ x.title }}</h2>
+		<a href="post/{{x.id}}">Read me >> </a>
+	</div>
+{% endfor %}
+
 </div>
 {% endblock %}

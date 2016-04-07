@@ -37,3 +37,12 @@ class Post(models.Model):
 	def __unicode__(self):
 		return self.title
 
+
+class Poems(models.Model):
+	title = models.CharField(max_length=50)
+	body = models.TextField()
+	author = models.CharField(max_length=80)
+
+	def __unicode__(self):
+		return self.title
+

@@ -6,11 +6,9 @@ from blog import views
 urlpatterns = [
 	url(r'^$', views.index, name = 'blog'),
 	url(r'^sveta_contact', views.sveta_contact),
-	url(r'^all_categories', views.all_categories),
-#	url(r'^all_categories/(?P<category_num>[0-9]+)$', views.all_categories, name = 'category_num'),
 	url(r'^post/([0-9]+)$', views.post, name = 'post_num'),
-	url(r'^category/(.*)', views.category_link),
-	# url(r'^$', views.current_datetime, name = 'current_datetime'),
+	url(r'^category/(.*)', views.categoryDisplay),
+	url(r'^poems/([0-9]+)$', views.poemses),
 ]
 
 #urlpatterns = [
@@ -20,5 +18,3 @@ urlpatterns = [
 #urlpatterns = patterns('',
 #	url(r'^$', 'views.index', name = 'index'))
 
-#urlpatterns = patterns('',
-#	url(r'^$', 'post.html.index', name = 'index'))

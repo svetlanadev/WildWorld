@@ -40,11 +40,11 @@
 	</div>
 {% endfor %}
 -------------------------------------------------
-<!-- {% for xy in allpoems}
+{% for xy in allpoems %}
 	<div>
-		<h2>{{ xy.title }}</h2>
-		<a href="poems/{{xy.id}}">more</a>
-	</div> -->
+		<a href="poems/{{xy.id}}">{{xy.title}}</a>
+	</div>
+{% endfor %}
 
 {% endblock %}
 

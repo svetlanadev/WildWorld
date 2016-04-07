@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 import datetime
 #from blog.models import TemplateView
-from blog.models import Post, Category
+from blog.models import Post, Category, Poems
 
 class MyStruct(object):
 		pass
@@ -13,19 +13,13 @@ def home_page(request):
 
 def index(request):
 	posts = Post.objects.all()
-	categories = Category.objects.all()
-	return render(request, 'blog_index.html', {'lamps' : posts, 'categories' : categories})
+	categories_any_variable = Category.objects.all()
+	poems_variable = Poems.objects.all()
+	return render(request, 'blog_index.html', {'lamps' : posts, 'category_sequence' : categories_any_variable, 'allpoems' : poems_variable})
 
 
 def sveta_contact(request):
 	return render(request, 'sveta_contact.html',)
-
-def all_categories(request):
-	categories = Category.objects.all()
-	return render(request, 'all_categories.html', {'categories' : categories})
-
-def category_link(request):
-	return render(request, 'blog_index.html', {'article' : post})
 
 
 def post(request, post_num):
@@ -34,12 +28,19 @@ def post(request, post_num):
 	return render(request, 'post.html', {'banana' : post})
 
 
-# def current_datetime(request):
-# 	now = datatime.datatime.now()
-# 	html = "<html><body>It is now %s.</body></html>" % now
-# 	return HttpResponse(html)
+def categoryDisplay(request, categ_name):
+	categoryItem = Category.objects.get(name=categ_name)
+	return render(request, 'category_one.html', {'categoryItem' : categoryItem, 'lamps': Post.objects.filter(category=categoryItem)})
 
 
+def poemses(request, poem_num):
+	poem = Poems.objects.get(id=poem_num)
+	return render(request, 'poems.html', {'mandarina' : poem})
+
+# def category_link(request, cat_name):
+# 	category_name = Category.objects.get(name=cat_name)
+# 	posts = Post.objects.filter(category_link=category_name)
+# 	return render(request, 'blog_index.html', {'allposts' : posts})
 
 
 
