@@ -5,6 +5,8 @@ from blog import views
 
 urlpatterns = [
 	url(r'^$', views.index, name = 'blog'),
+	url(r'^index$', views.index),
+	url(r'^o_nas', views.o_nas),
 	url(r'^sveta_contact', views.sveta_contact),
 	url(r'^post/([0-9]+)$', views.post, name = 'post_num'),
 	url(r'^category/(.*)', views.categoryDisplay),

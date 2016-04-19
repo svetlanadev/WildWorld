@@ -17,6 +17,8 @@ def index(request):
 	poems_variable = Poems.objects.all()
 	return render(request, 'blog_index.html', {'lamps' : posts, 'category_sequence' : categories_any_variable, 'allpoems' : poems_variable})
 
+def o_nas(request):
+	return render(request, 'o_nas.html')
 
 def sveta_contact(request):
 	return render(request, 'sveta_contact.html',)
