@@ -1,6 +1,6 @@
 {% extends "blog_index.html" %}
 
-
+{% load staticfiles %}
 {% block content %}
 
 <div>
@@ -8,6 +8,7 @@
 	<p>Title : {{mandarina.title}}</p>
 	<p>Body: {{mandarina.body}}</p>
 	<p>Author: {{mandarina.author}}</p>
+	<img src="{% static "blog/images/serj1.jpg" %}" alt="Author Serj"/>
 </div>
 {% endblock %}
 

@@ -31,7 +31,7 @@ def post(request, post_num):
 
 
 def categoryDisplay(request, categ_name):
-	categoryItem = Category.objects.get(name=categ_name)
+	categoryItem = Category.objects.get(id=categ_name)
 	return render(request, 'category_one.html', {'categoryItem' : categoryItem, 'lamps': Post.objects.filter(category=categoryItem)})
 
 

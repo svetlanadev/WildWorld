@@ -1,4 +1,4 @@
-{% extends "blog_base.html" %}
+{% extends "base.html" %}
 
 <ul>
 {% load menubuilder %}
@@ -22,7 +22,7 @@
 <!-- <p>Hello, Django. All categories</p> -->
 {% for z in category_sequence %}
 	<div>
-		<a href="category/{{z.name}}">{{ z.name }}</a>
+		<a href="category/{{z.id}}">{{ z.name }}</a>
 	</div>
 {% endfor %}
 -----------------------------------------------
