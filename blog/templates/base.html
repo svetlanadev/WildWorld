@@ -3,13 +3,39 @@
 
 <html>
 	<head>
-  <link rel="stylesheet" href="{% static "blog/css/style.css" %}"/ type="text/css">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{% static "blog/css/style.css" %}"/ type="text/css">
+    <title> My Cool Django Blog </title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <style id="holderjs-style" type="text/css"></style>
+    </head>
 
+  <body>
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="blog-nav">
+          <a class="blog-nav-item active" href="index">Главная</a>
+          <a class="blog-nav-item" href="allposts">Все посты</a>
+          <a class="blog-nav-item" href="allcategories">Все категории</a>
+          <a class="blog-nav-item" href="poems">Любимые стихи</a>
+          <a class="blog-nav-item" href="sveta_contact">О нас</a>
+        </nav>
+      </div>
+    </div>
+    <div class="container">
+
+      <div class="blog-header">
+        <h1 class="blog-title">Наше маленькое приключение...</h1>
+        <p class="lead blog-description">в которое мы отправляемся снова и снова!</p>
+      </div>
+    </div>
+
+<!--   <link rel="stylesheet" href="{% static "blog/css/style.css" %}"/ type="text/css">
 		<title>{% block title %} My Cool Django Blog {% endblock %}</title>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 		<nav class="navbar navbar-inverse" role="navigation">
   <div class="container-fluid">
-    <!-- Бренд та перемикач згруповані для кращого відображення на мобільних пристроях -->
+    Бренд та перемикач згруповані для кращого відображення на мобільних пристроях
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
         <span class="sr-only">Toggle navigation</span>
@@ -18,10 +44,10 @@
         <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="index">Главная</a>
-    </div>
+    </div> -->
 
     <!-- Зібрано навігаційні лінки, форми, та інший вміст для переключення -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+<!--     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li class="active"><a href="sveta_contact">Наши контакты <span class="sr-only">(поточний)</span></a></li>
         <li><a href="admin">Admin</a></li>
@@ -57,12 +83,12 @@
           </ul>
         </li>
       </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
-</head>
+    </div><! /.navbar-collapse -->
+<!--   </div> --><!-- /.container-fluid -->
+<!-- </nav> --> <!-- -->
 
-	<body>
+
+
 		{% block head %}
 			{% block htitle %} {% endblock %}
 			{% block menu %} {% endblock %}
