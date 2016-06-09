@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+<body>
+{% block content %}
+<h1>Блог о наших приключениях</h1>
+<!-- <img src="{% static "blog/images/busgif.gif" %}" alt="My image"/> -->
+<h2>{{ title | upper }}</h2>
+
+{% for z in category_sequence %}
+	<div>
+		<a href="category/{{z.id}}">{{ z.name }}</a>
+	</div>
+{% endfor %}
+-----------------------------------------------
+
+{% for x in lamps %}
+	<div>
+		<h2>{{ x.title }}</h2>
+		<p><a class="btn btn-primary btn-lg" href="post/{{x.id}}" role="button">Дізнатись більше..</a></p>
+	</div>
+{% endfor %}
+</body>
+-------------------------------------------------
+<div style="overflow: auto; width: 250px; height: 150px; border: solid 2px #dddddd">
+<h3 align="center">Диктант</h3>
+На дощатой террасе, близ конопляника, небезызвестная вдова Агриппина Саввечна, потчевала, отставного коллежского асессора Аполлона Карповича, моллюсками и другими яствами, под аккомпанемент виолончели.
+</div>
+<br/>
+-------------------------------------------------
+<p>Любимые стихи:</p>
+{% for x in allpoems %}
+    {{x.id}}
+{% endfor %}
+
+{% endblock %}
