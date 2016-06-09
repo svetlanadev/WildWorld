@@ -16,95 +16,85 @@
         <nav class="blog-nav">
           <a class="blog-nav-item active" href="index">Главная</a>
           <a class="blog-nav-item" href="allposts">Все посты</a>
-          <a class="blog-nav-item" href="allcategories">Все категории</a>
-          <a class="blog-nav-item" href="poems">Любимые стихи</a>
-          <a class="blog-nav-item" href="sveta_contact">О нас</a>
+          <a class="blog-nav-item" href="allcategory">Все категории</a>
+          <a class="blog-nav-item" href="#">Любимые стихи</a>
+          <a class="blog-nav-item" href="sveta_contact">Наши контакты</a>
         </nav>
       </div>
     </div>
     <div class="container">
 
       <div class="blog-header">
-        <h1 class="blog-title">Наше маленькое приключение...</h1>
-        <p class="lead blog-description">в которое мы отправляемся снова и снова!</p>
+        <h1 class="blog-title">Notre petit Voyage..</h1>
+        <p class="lead blog-description">avec amour</p>
       </div>
     </div>
 
-<!--   <link rel="stylesheet" href="{% static "blog/css/style.css" %}"/ type="text/css">
-		<title>{% block title %} My Cool Django Blog {% endblock %}</title>
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-		<nav class="navbar navbar-inverse" role="navigation">
-  <div class="container-fluid">
-    Бренд та перемикач згруповані для кращого відображення на мобільних пристроях
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="index">Главная</a>
-    </div> -->
 
-    <!-- Зібрано навігаційні лінки, форми, та інший вміст для переключення -->
-<!--     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="sveta_contact">Наши контакты <span class="sr-only">(поточний)</span></a></li>
-        <li><a href="admin">Admin</a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Choose coutry <span class="caret"></span></a>
-          <ul class="dropdown-menu" role="menu">
-            <li><a href="#">Дія</a></li>
-            <li><a href="#">Інша дія</a></li>
-            <li><a href="#">Тут ще щось</a></li>
-            <li class="divider"></li>
-            <li><a href="#">Відокремлений лінк</a></li>
-            <li class="divider"></li>
-            <li><a href="#">Ще один відокремлений лінк</a></li>
+    <div class="row">
+
+        <div class="col-sm-8 blog-main">
+
+          <div class="blog-post">
+            {% block page %}
+              {% block content %}
+              {% endblock %}
+            {% endblock %}          
+          </div><!-- /.blog-post -->
+
+          <ul class="pager">
+            <li><a href="#">Previous</a></li>
+            <li><a href="#">Next</a></li>
           </ul>
-        </li>
-      </ul>
-      <form class="navbar-form navbar-left" role="search">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
-        </div>
-        <button type="submit" class="btn btn-default">Відправити</button>
-      </form>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Лінк</a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Спадне меню <span class="caret"></span></a>
-          <ul class="dropdown-menu" role="menu">
-            <li><a href="#">Дія</a></li>
-            <li><a href="#">Інша дія</a></li>
-            <li><a href="#">Тут ще щось</a></li>
-            <li class="divider"></li>
-            <li><a href="#">Відокремлений лінк</a></li>
-          </ul>
-        </li>
-      </ul>
-    </div><! /.navbar-collapse -->
-<!--   </div> --><!-- /.container-fluid -->
-<!-- </nav> --> <!-- -->
+
+        </div><!-- /.blog-main -->
+
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+          <div class="sidebar-module sidebar-module-inset">
+            <h4>Our friends</h4>
+            <p>Each of you knows that we so much love to travel. On this blog we will share with you some news and interesting articles.<br/><em>Serj&Svet</em></p>
+            <img src="{% static "blog/images/travel-quote.jpg" %}" alt="Picture1"/>
+          </div>
+          <div class="sidebar-module">
+            <h4>Archives</h4>
+            <ol class="list-unstyled">
+              <li><a href="#">February 2016</a></li>
+              <li><a href="#">January 2016</a></li>
+              <li><a href="#">December 2015</a></li>
+              <li><a href="#">November 2015</a></li>
+              <li><a href="#">October 2015</a></li>
+              <li><a href="#">September 2015</a></li>
+              <li><a href="#">August 2015</a></li>
+              <li><a href="#">July 2013</a></li>
+              <li><a href="#">June 2015</a></li>
+            </ol>
+          </div>
+          <div class="sidebar-module">
+            <h4>Elsewhere</h4>
+            <ol class="list-unstyled">
+              <li><a href="https://github.com/svetlanadev">GitHub</a></li>
+              <li><a href="https://www.facebook.com/profile.php?id=100004153561992">Facebook</a></li>
+              <li><a href="#">Photogallery</a></li>              
+            </ol>
+          </div>
+        </div><!-- /.blog-sidebar -->
+
+      </div><!-- /.row -->
+
+    </div><!-- /.container -->
+
+    <div class="blog-footer">
+      <p>Blog built for friends by <a href="https://www.facebook.com/profile.php?id=100004153561992">@svetlanadev</a>.</p>
+      <p>
+        <a href="#">Back to top</a>
+      </p>
+    </div>
 
 
 
-		{% block head %}
-			{% block htitle %} {% endblock %}
-			{% block menu %} {% endblock %}
-		{% endblock %}
-
-		{% block page %}
-			{% block content %}
-      {% endblock %}
-		{% endblock %}
-
-		{% block footer %}
-			{% block copyright %}
-      <p>Footer</p>
-			{% endblock %}
-		{% endblock %}
-	</body>
+</body>
 </html>
 
 
+          <!--  <h2 class="blog-post-title">Sample blog post</h2>
+            <p class="blog-post-meta">January 1, 2014 by <a href="#">Mark</a></p> -->

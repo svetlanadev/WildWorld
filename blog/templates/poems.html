@@ -1,15 +1,16 @@
 {% extends "index.html" %}
-
 {% load staticfiles %}
-{% block content %}
 
-<div>
-	<p2>My poems</p2>
-	<p>Title : {{allpoems.title}}</p>
-	<p>Body: {{mandarina.body}}</p>
-	<p>Author: {{mandarina.author}}</p>
+
+{% block content %}
+	<p>Любимые стихи:</p>
+	{% for x in allpoems %}
+    	{{x.title}}
+    	{{x.body}}
+    	{{x.author}}
+	{% endfor %}
+	<p>Stih okonchen</p>
 	<img src="{% static "blog/images/serj1.jpg" %}" alt="Author Serj"/>
-</div>
 {% endblock %}
 
 

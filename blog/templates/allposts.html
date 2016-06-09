@@ -1,0 +1,15 @@
+{% extends "index.html" %}
+
+{% block content %}
+<div>
+	<h2>Тут все посты:</h2>
+
+{% for x in lamps %}
+	<div>
+		<h2>{{ x.title }}</h2>
+		<p><a class="btn btn-primary btn-lg" href="post/{{x.id}}" role="button">Дізнатись більше..</a></p>
+	</div>
+{% endfor %}
+
+</div>
+{% endblock %}

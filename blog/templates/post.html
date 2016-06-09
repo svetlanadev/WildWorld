@@ -1,17 +1,18 @@
 {% extends "index.html" %}
-
+{% load staticfiles %}
 
 
 {% block content %}
 		<div>
 			<p>Category: <a href="category/{{categoryItem.name}}">more</a></p> 
 		</div>
-
+    {% for p in posts %}
         <div id="post">
-                <h2>Post title: {{ banana.title }}</h2>               
-                <p>Body: {{ banana.body }}</p>
-                <p>Created: {{banana.created}}</p>
+                <h2 class="blog-post-title">Post title: {{ p.title }}</h2>
+                <p>Body: {{ p.body }}</p>
+                <p>Created: {{ p.created }}</p>
         </div>
+    {% endfor %}
 {% endblock %}
 
 <!-- 

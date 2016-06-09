@@ -1,15 +1,13 @@
+{% extends "index.html" %}
 
+{% block content %}
+<div>
+	<h2>Тут все Категории:</h2>
+	{% for z in category_sequence %}
+		<div>
+			<a href="category/{{z.id}}">{{ z.name }}</a>
+		</div>
+	{% endfor %}
+</div>
+{% endblock %}
 
-<!doctype html>
-<html>
-<h1>All categories post</h1>
-<p>Here will be all categories</p>
-{% for category in categories %}
-	{{ category }}
-{% endfor %}
-
-
-
-
-
-</html>
