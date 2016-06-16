@@ -4,12 +4,18 @@
 <div>
 	<h2>Тут все посты:</h2>
 
-{% for x in lamps %}
+<ul>
+{% for post in posts %}
 	<div>
-		<h2>{{ x.title }}</h2>
-		<p><a class="btn btn-primary btn-lg" href="post/{{x.id}}" role="button">Дізнатись більше..</a></p>
+	<li>
+		<h2>{{ post.title }}</h2>
+		<p>Created: {{ post.created }}</p>
+		<p><a class="btn btn-primary btn-lg" href="post" role="button">Дізнатись більше..</a></p>
+	</li>
 	</div>
 {% endfor %}
-
+</ul>
 </div>
 {% endblock %}
+
+<!-- href="post/{{post.id}}" -->

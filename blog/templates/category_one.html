@@ -3,12 +3,12 @@
 {% block content %}
 <div>
 	<h2>Це  Категорія :{{categoryItem.name}}</h2>>
-	{% for x in lamps %}
+	{% for post in posts %}
 		<div>
-			<p>{{ x.title }}</p>
-			<a href="post/{{x.id}}">Read me >> </a>
+			<p>{{ post.title }}</p>
+			<a href="post/{{post.id}}">Read me >> </a>
 		</div>
 	{% endfor %}
 </div>
 {% endblock %}
- 
+  

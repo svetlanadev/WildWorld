@@ -9,20 +9,21 @@ class MyStruct(object):
 
 
 def index(request):
-	posts = Post.objects.all()
+	post = Post.objects.order_by('-created')[:2]
 	categ = Category.objects.all()
 	poems_variable = Poems.objects.all()
-	return render(request, 'index.html', {'lamps' : posts, 'category_sequence' : categ, 'allpoems' : poems_variable})
+	return render(request, 'index.html', {'posts' : post, 'category_sequence' : categ, 'allpoems' : poems_variable})
+
 
 def allposts(request, allposts_num):
-	posts = Post.objects.all()
-	return render(request, 'allposts.html', {'lamps' : posts})
+	post = Post.objects.order_by('-created')
+	return render(request, 'allposts.html', {'posts' : post})
 
 
 def post(request, post_num):
 	post = Post.objects.get(id=post_num)
 	# post = {'title' : 'myTitle', 'body' : 'my body'}
-	return render(request, 'post.html', {'p' : post})
+	return render(request, 'post.html', {'posts' : post})
 
 def allcategory(request, allcateg_num):
 	categ = Category.objects.all()
@@ -30,12 +31,11 @@ def allcategory(request, allcateg_num):
 
 def categoryDisplay(request, categ_name):
 	categoryItem = Category.objects.get(id=categ_name)
-	return render(request, 'category_one.html', {'categoryItem' : categoryItem, 'lamps': Post.objects.filter(category=categoryItem)})
+	return render(request, 'category_one.html', {'categoryItem' : categoryItem, 'posts': Post.objects.filter(category=categoryItem)})
 
 
-def poems(request, poem_num):
-	poemses = Poems.objects.get(id=poem_num)
-	return render(request, 'poems.html', {'allpoems' : poemses})
+def poems(request):
+	return render(request, 'poems.html')
 
 
 def o_nas(request):
@@ -43,9 +43,6 @@ def o_nas(request):
 
 def sveta_contact(request):
 	return render(request, 'sveta_contact.html',)
-
-
-
 
 
 # ----  few functioons just for training 
@@ -57,6 +54,9 @@ def results(request, question_id):
 def vote(request, question_id):
 	return HttpResponse("You're voting on question %s." % question_id)
 
-
+def test(request):
+	latest_question_list = Post.objects.all().order_by('-date')[:5]
+	context = {'posts' : latest_question_list}
+	return render(request, 'test.html', context)
 
  

@@ -6,10 +6,10 @@
 <!-- <img src="{% static "blog/images/busgif.gif" %}" alt="My image"/> -->
 	<div>
 		<p>Category: <a href="category/{{categoryItem.name}}">more</a></p> 
-    {% for p in posts %}	
-    	<h2 class="blog-post-title">{{ p.title }}</h2>               
-        <p>{{ p.body }}</p>
-	    <p>Created: {{ p.created}}</p>
+    {% for post in posts %}	
+    	<h2 class="blog-post-title">{{ post.title }}</h2>               
+        <p>{{ post.body }}</p>
+	    <p>Created: {{ post.created}}</p>
 	{% endfor %}
 	</div>
 
@@ -27,4 +27,4 @@
 	</div>
 {% endfor %}
 ---------------------------------------------
-{% endblock %}
+{% endblock %}  

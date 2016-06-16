@@ -1,0 +1,19 @@
+{% extends "index.html" %}
+{% load staticfiles %}
+
+{% block content %}
+	{% if latest_question_list %}
+    	<ul>
+    	{% for p in posts %}
+    		<div id="post">
+				<h2>Post title: {{ p.title }}</h2>
+        	</div>
+    	{% endfor %}
+    	</ul>
+	{% else %}
+    	<p>No polls are available.</p>
+	{% endif %}
+{% endblock %}
+
+
+<!--         	<li><a href="/polls/{{ question.id }}/">{{ p.title }}</a></li> -->

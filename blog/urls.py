@@ -9,15 +9,16 @@ urlpatterns = [
 	url(r'^o_nas', views.o_nas),
 	url(r'^sveta_contact', views.sveta_contact),
 	url(r'^allposts/(.*)', views.allposts, name='allposts'),
-	url(r'^allposts/post/([0-9]+)$', views.post, name = 'post_num'),
+	url(r'^post/([0-9]+)$', views.post, name = 'post_num'),
 	url(r'^allcategory/(.*)', views.allcategory, name='allcategory'),
 	url(r'^category/(.*)', views.categoryDisplay),
 	url(r'^poems', views.poems, name='poems'),
 	url(r'^(?P<question_id>\d+)/results/$', views.results, name="results"),
     url(r'^(?P<question_id>\d+)/vote/$', views.vote, name="vote"),
+    url(r'^test', views.test, name='test')
 ]
 
- 
+  
 #urlpatterns = [
 #	url(r'^$', views.home_page, name = 'blog')
 #]
