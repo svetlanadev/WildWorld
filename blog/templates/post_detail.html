@@ -1,0 +1,11 @@
+{% extends "index.html" %}
+{% load staticfiles %}
+
+{% block content %}
+        <h1>Title: {{ post.title }}</h1>
+        <p>Body: {{ post.body|linebreaks }}</p>
+
+{% endblock %}
+
+
+

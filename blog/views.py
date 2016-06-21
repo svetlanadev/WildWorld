@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 import datetime
 #from blog.models import TemplateView
@@ -7,7 +7,7 @@ from blog.models import Post, Category, Poems
 class MyStruct(object):
 		pass
 
-
+ 
 def index(request):
 	post = Post.objects.order_by('-created')[:2]
 	categ = Category.objects.all()
@@ -15,15 +15,25 @@ def index(request):
 	return render(request, 'index.html', {'posts' : post, 'category_sequence' : categ, 'allpoems' : poems_variable})
 
 
-def allposts(request, allposts_num):
+def allposts(request, allpostsnum):
 	post = Post.objects.order_by('-created')
 	return render(request, 'allposts.html', {'posts' : post})
 
+# def allposts(request, allposts_num):
+# 	post = Post.objects.order_by('-created')
+# 	return render(request, 'allposts.html', {'posts' : post})
 
-def post(request, post_num):
-	post = Post.objects.get(id=post_num)
-	# post = {'title' : 'myTitle', 'body' : 'my body'}
-	return render(request, 'post.html', {'posts' : post})
+
+# def post(request, pk):
+# 	post = Post.objects.get(id=pk)
+# 	context = {'posts' : post}
+# 	return render(request, 'post.html', context)
+
+
+
+def post_detail(request, post_id):
+	post = get_object_or_404(Post, id=post_id)
+	return render(request, 'post_detail.html', {'post' : post})
 
 def allcategory(request, allcateg_num):
 	categ = Category.objects.all()

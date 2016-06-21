@@ -2,7 +2,7 @@
 {% load staticfiles %}
 
 {% block content %}
-	{% if latest_question_list %}
+	{% if posts %}
     	<ul>
     	{% for p in posts %}
     		<div id="post">
@@ -11,9 +11,10 @@
     	{% endfor %}
     	</ul>
 	{% else %}
-    	<p>No polls are available.</p>
+    	<p>No posts are available.</p>
 	{% endif %}
 {% endblock %}
 
 
 <!--         	<li><a href="/polls/{{ question.id }}/">{{ p.title }}</a></li> -->
+<!-- <li><a href="{% url 'blog:results' question.id %}">{{ question.question_text }}</a></li> -->

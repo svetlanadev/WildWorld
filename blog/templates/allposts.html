@@ -2,20 +2,27 @@
 
 {% block content %}
 <div>
-	<h2>Тут все посты:</h2>
+	<h2>Тут находяться все наши посты:</h2>
 
 <ul>
-{% for post in posts %}
+{% for p in posts %}
 	<div>
 	<li>
-		<h2>{{ post.title }}</h2>
-		<p>Created: {{ post.created }}</p>
-		<p><a class="btn btn-primary btn-lg" href="post" role="button">Дізнатись більше..</a></p>
+		<h2>{{ p.title }}</a></h2>
+		<p>Created: {{ p.created }}</p>
+		<p><a class="btn btn-primary btn-lg" href="{% url 'post_detail' post_id=p.id %}" role="button">Дізнатись більше..</a></p>
 	</li>
 	</div>
 {% endfor %}
 </ul>
 </div>
-{% endblock %}
+{% endblock %} 
 
 <!-- href="post/{{post.id}}" -->
+<!-- 	<div>
+	<li>
+		<h2>{{ p.title }}</h2>
+		<p>Created: {{ p.created }}</p>
+		<p><a class="btn btn-primary btn-lg" href="post/{{ p.id }}" role="button">Дізнатись більше..</a></p>
+	</li>
+	</div> -->

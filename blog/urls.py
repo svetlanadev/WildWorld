@@ -5,11 +5,12 @@ from blog import views
 
 urlpatterns = [
 	url(r'^$', views.index),
-	url(r'^index/', views.index, name='index'),
+	url(r'^index', views.index, name='index'),
 	url(r'^o_nas', views.o_nas),
 	url(r'^sveta_contact', views.sveta_contact),
 	url(r'^allposts/(.*)', views.allposts, name='allposts'),
-	url(r'^post/([0-9]+)$', views.post, name = 'post_num'),
+	# url(r'^post/([0-9]+)$', views.post, name = 'post_num'),
+	url(r'^post/(?P<post_id>[0-9]+)/$', views.post_detail, name = 'post_detail'),
 	url(r'^allcategory/(.*)', views.allcategory, name='allcategory'),
 	url(r'^category/(.*)', views.categoryDisplay),
 	url(r'^poems', views.poems, name='poems'),
@@ -17,7 +18,7 @@ urlpatterns = [
     url(r'^(?P<question_id>\d+)/vote/$', views.vote, name="vote"),
     url(r'^test', views.test, name='test')
 ]
-
+ 
   
 #urlpatterns = [
 #	url(r'^$', views.home_page, name = 'blog')
