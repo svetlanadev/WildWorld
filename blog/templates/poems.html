@@ -4,13 +4,10 @@
 
 {% block content %}
 	<p>Любимые стихи:</p>
-	{% for x in allpoems %}
-    	{{x.title}}
-    	{{x.body}}
-    	{{x.author}}
+	{% for poem in poems %}
+    	<p><a href="{% url 'poem' poem_id=poem.id %}">{{poem.title}}</a></p>
 	{% endfor %}
-	<p>Stih okonchen</p>
-	<img src="{% static "blog/images/travel.jpg" %}" alt="Author Serj"/>
+	<img src="{% static "blog/images/kalina.jpg" %}" alt="Author Serj"/>
 {% endblock %}
 
  

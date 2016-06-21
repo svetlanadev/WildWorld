@@ -1,13 +1,14 @@
 {% extends "index.html" %}
 
+
 {% block content %}
 <div>
 	<h2>Тут все Категории:</h2>
-	{% for z in category_sequence %}
+	{% for category in categories %}
 		<div>
-			<a href="category/{{z.id}}">{{ z.name }}</a>
+			<a href="#">{{ category.name }}</a>
 		</div>
-	{% endfor %}
+	{% endfor %}	
+
 </div>
 {% endblock %}
-

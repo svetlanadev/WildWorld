@@ -5,7 +5,6 @@
 {% block content %}
 <!-- <img src="{% static "blog/images/busgif.gif" %}" alt="My image"/> -->
 	<div>
-		<p>Category: <a href="category/{{categoryItem.name}}">more</a></p> 
     {% for post in posts %}	
     	<h2 class="blog-post-title">{{ post.title }}</h2>               
         <p>{{ post.body }}</p>
@@ -13,13 +12,6 @@
 	{% endfor %}
 	</div>
 
-<h3>Любимые стихи:</h3>
-{% for x in allpoems %}
-    {{x.title}}
-    {{x.body}}
-    {{x.author}}
-{% endfor %}
-<p>Stih okonchen</p>
 ---------------------------------------------
 {% for z in category_sequence %}
 	<div>

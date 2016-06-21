@@ -12,8 +12,9 @@ urlpatterns = [
 	# url(r'^post/([0-9]+)$', views.post, name = 'post_num'),
 	url(r'^post/(?P<post_id>[0-9]+)/$', views.post_detail, name = 'post_detail'),
 	url(r'^allcategory/(.*)', views.allcategory, name='allcategory'),
-	url(r'^category/(.*)', views.categoryDisplay),
+	url(r'^category/(?P<category_id>[0-9]+)/$', views.category_detail, name='categorydetail'),
 	url(r'^poems', views.poems, name='poems'),
+	url(r'^poem/(?P<poem_id>[0-9]+)/$', views.poem, name='poem'),
 	url(r'^(?P<question_id>\d+)/results/$', views.results, name="results"),
     url(r'^(?P<question_id>\d+)/vote/$', views.vote, name="vote"),
     url(r'^test', views.test, name='test')

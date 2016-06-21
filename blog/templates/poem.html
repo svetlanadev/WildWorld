@@ -1,0 +1,9 @@
+{% extends "index.html" %}
+{% load staticfiles %}
+
+{% block content %}
+        <h1>{{ poem.title }}</h1>
+        <p>{{ poem.body|linebreaks }}</p>
+        <p>Author: {{ poem.author}}</p>
+
+{% endblock %}
