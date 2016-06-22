@@ -1,12 +1,12 @@
 {% extends "index.html" %}
 
 
-{% block content %}
+{% block content %} 
 <div>
 	<h2>Тут все Категории:</h2>
 	{% for category in categories %}
 		<div>
-			<a href="#">{{ category.name }}</a>
+			<p><a href="{% url 'category' category_id=category.id %}">{{ category.name }}</a>
 		</div>
 	{% endfor %}	
 

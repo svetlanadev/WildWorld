@@ -4,7 +4,7 @@ import datetime
 #from blog.models import TemplateView
 from blog.models import Post, Category, Poems
 
-class MyStruct(object):
+class MyStruct(object): 
 		pass
 
 
@@ -32,28 +32,24 @@ def allcategory(request, allcateg_num):
 	categories = Category.objects.all()
 	return render(request, 'all_categories.html', {'categories' : categories})
 
-def category_detail(request, category_id):
+def category(request, category_id):
 	category = get_object_or_404(Category, id=category_id)
-	return render(request, 'category_detail.html')
+	return render(request, 'category.html', {'category' : category})
 
 
 # def categoryDisplay(request, categ_name):
 # 	categoryItem = Category.objects.get(id=categ_name)
 # 	return render(request, 'category_one.html', {'categoryItem' : categoryItem, 'posts': Post.objects.filter(category=categoryItem)})
 
+# -----def poems, def poem - This functions displays poems
 def poems(request):
 	poems = Poems.objects.all()
 	return render(request, 'poems.html', {'poems' : poems})
-
-
 
 def poem(request, poem_id):
 	poem = get_object_or_404(Poems, id=poem_id)
 	return render(request, 'poem.html', {'poem' : poem})
 
-
-def o_nas(request):
-	return render(request, 'o_nas.html')
 
 def sveta_contact(request):
 	return render(request, 'sveta_contact.html',)
