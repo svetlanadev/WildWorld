@@ -2,7 +2,19 @@
 {% load staticfiles %}
 
 {% block content %}
-        <h1>Good, Svetik!</h1>
-        <p>{{category.name}}</p>
+    <h1>{{ category.name }}</h1>
+        {% if category %}
+            {% if posts %}
+            <ul>
+                {% for posts in posts %}
+                <li><a href="{{ posts.url }}">{{ posts.title }}</a></li>
+                {% endfor %}
+            </ul>
+            {% else %}
+                <strong>No posts currently in category.</strong>
+        	{% endif %}
+        {% else %}
+            The specified category {{ category_id }} does not exist!
+        {% endif %}
 
 {% endblock %}

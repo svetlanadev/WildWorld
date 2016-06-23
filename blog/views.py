@@ -33,8 +33,22 @@ def allcategory(request, allcateg_num):
 	return render(request, 'all_categories.html', {'categories' : categories})
 
 def category(request, category_id):
-	category = get_object_or_404(Category, id=category_id)
-	return render(request, 'category.html', {'category' : category})
+	context_dict = {}
+	try:
+		category = Category.objects.get(id=category_id)
+		context_dict['category_id'] = category.id
+		posts = Post.objects.filter(category=category)
+		context_dict['posts'] = posts
+		context_dict['category'] = category
+	except Category.DoesNotExist:
+		pass
+	return render(request, 'category.html', context_dict)
+
+
+
+# def category(request, category_id):
+# 	category = get_object_or_404(Category, id=category_id)
+# 	return render(request, 'category.html', {'category' : category})
 
 
 # def categoryDisplay(request, categ_name):
