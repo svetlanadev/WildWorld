@@ -15,6 +15,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='category',
             name='slug',
-            field=models.SlugField(default=b'SOME STRING', unique=True),
+            field=models.SlugField(default=b'SOME STRING'),
         ),
     ]

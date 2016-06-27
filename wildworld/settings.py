@@ -39,8 +39,6 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'blog',
-    'menu',
-    'photologue',
     'sortedm2m',
 )
 
@@ -112,4 +110,7 @@ MEDIA_URL = '/media/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
  
+)
+MEDIAFILES_DIRS = (
+    os.path.join(BASE_DIR, "media"),
 )

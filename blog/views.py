@@ -3,6 +3,8 @@ from django.http import HttpResponse
 import datetime
 #from blog.models import TemplateView
 from blog.models import Post, Category, Poems
+from blog.form import PostForm
+from django.shortcuts import redirect
 
 class MyStruct(object): 
 		pass
@@ -10,10 +12,10 @@ class MyStruct(object):
 
 # -----def index - Home page 
 def index(request):
-	post = Post.objects.order_by('-created')[:2]
+	post = Post.objects.order_by('-created')[:3]
 	categ = Category.objects.all()
 	poems_variable = Poems.objects.all()
-	return render(request, 'index.html', {'posts' : post, 'category_sequence' : categ, 'allpoems' : poems_variable})
+	return render(request, 'index.html', {'posts' : post, 'categories' : categ, 'allpoems' : poems_variable})
 
 
 # -----def allposts, def post_detail - This functions displays posts
@@ -45,12 +47,6 @@ def category(request, category_id):
 	return render(request, 'category.html', context_dict)
 
 
-
-# def category(request, category_id):
-# 	category = get_object_or_404(Category, id=category_id)
-# 	return render(request, 'category.html', {'category' : category})
-
-
 # def categoryDisplay(request, categ_name):
 # 	categoryItem = Category.objects.get(id=categ_name)
 # 	return render(request, 'category_one.html', {'categoryItem' : categoryItem, 'posts': Post.objects.filter(category=categoryItem)})
@@ -65,8 +61,34 @@ def poem(request, poem_id):
 	return render(request, 'poem.html', {'poem' : poem})
 
 
+# -----def sveta_contact - This function displays contacts
 def sveta_contact(request):
 	return render(request, 'sveta_contact.html',)
+
+
+def post_add(request):
+	if request.method == "POST":
+		form = PostForm(request.POST)
+		if form.is_valid():
+			form.save()
+			return redirect('blog.views.index')
+	else:
+		form = PostForm()
+	return render(request, 'post_add.html', {'form' : form})
+
+
+def post_edit(request, post_id):
+	post = get_object_or_404(Post, id=post_id)
+	if request.method == "POST":
+		form = PostForm(request.POST, instance=post)
+		if form.is_valid():
+			form.save()
+			return redirect('blog.views.index')
+	else:
+		form = PostForm(instance=post)
+	return render(request, 'post_add.html', {'form' : form})
+
+
 
 
 # ----  few functioons just for training 
@@ -79,13 +101,7 @@ def vote(request, question_id):
 	return HttpResponse("You're voting on question %s." % question_id)
 
 def test(request):
-	latest_question_list = Post.objects.all().order_by('-date')[:5]
+	latest_question_list = Post.objects.all()
 	context = {'posts' : latest_question_list}
 	return render(request, 'test.html', context)
 
-
-
-# def post(request, pk):
-# 	post = Post.objects.get(id=pk)
-# 	context = {'posts' : post}
-# 	return render(request, 'post.html', context)

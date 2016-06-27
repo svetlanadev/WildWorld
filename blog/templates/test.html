@@ -4,10 +4,8 @@
 {% block content %}
 	{% if posts %}
     	<ul>
-    	{% for p in posts %}
-    		<div id="post">
-				<h2>Post title: {{ p.title }}</h2>
-        	</div>
+    	{% for post in posts %}
+			<h2>Post title: {{ post.title }}</h2>
     	{% endfor %}
     	</ul>
 	{% else %}

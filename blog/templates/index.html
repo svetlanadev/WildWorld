@@ -3,19 +3,20 @@
 
 
 {% block content %}
-<!-- <img src="{% static "blog/images/busgif.gif" %}" alt="My image"/> -->
+	<p><a class="btn btn-primary btn-lg" href="{% url 'blog.views.post_add'%}" role="button">Add Post</a></p>
 	<div>
+	<h3>Последние заметки: </h3>
     {% for post in posts %}	
-    	<h2 class="blog-post-title">{{ post.title }}</h2>               
+    	<h2 class="blog-post-title">{{ post.title }}</h2>  
+	    <p>Created: {{ post.created}}</p>    	             
         <p>{{ post.body }}</p>
-	    <p>Created: {{ post.created}}</p>
 	{% endfor %}
 	</div>
 
 ---------------------------------------------
-{% for z in category_sequence %}
+{% for category in categories %}
 	<div>
-		<a href="category/{{z.id}}">{{ z.name }}</a>
+		<a href="/category/{{ category.id }}">{{ category.name }}</a>
 	</div>
 {% endfor %}
 ---------------------------------------------
