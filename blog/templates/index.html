@@ -3,7 +3,7 @@
 
 
 {% block content %}
-	<p><a class="btn btn-primary btn-lg" href="{% url 'blog.views.post_add'%}" role="button">Add Post</a></p>
+	<p><a class="btn btn-primary btn-lg" href="{% url 'blog.views.post_add'%}" role="button">Добавить новый Пост</a></p>
 	<div>
 	<h3>Последние заметки: </h3>
     {% for post in posts %}	
@@ -14,11 +14,13 @@
 	</div>
 
 ---------------------------------------------
+<h4><a href="#">Добавить новую Категорию</a></h4>
 {% for category in categories %}
 	<div>
-		<a href="/category/{{ category.id }}">{{ category.name }}</a>
+		<a href="/category/{{ category.id }}">Категория {{ category.name }}</a>
 	</div>
 {% endfor %}
+
 ---------------------------------------------
 
 {% endblock %}   

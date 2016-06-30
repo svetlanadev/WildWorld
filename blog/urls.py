@@ -1,6 +1,6 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
-from blog import views
+from blog import views 
 
 
 urlpatterns = [
@@ -15,6 +15,7 @@ urlpatterns = [
 	url(r'^category/(?P<category_id>[0-9]+)/$', views.category, name='category'),
 	url(r'^poems', views.poems, name='poems'),
 	url(r'^poem/(?P<poem_id>[0-9]+)/$', views.poem, name='poem'),
+	url(r'^poem/add/$', views.poem_add, name='poem_add'),
 
 	url(r'^(?P<question_id>\d+)/results/$', views.results, name="results"),
     url(r'^(?P<question_id>\d+)/vote/$', views.vote, name="vote"),

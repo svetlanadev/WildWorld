@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+
+{% block content %}
+<h2>Add poem</h2> 
+<form method="post"> {% csrf_token %}
+	{{ form.as_p }}
+<button type="submit" class="save btn btn-default">Save, mate</button>
+</form>
+
+
+{% endblock %}

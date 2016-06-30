@@ -3,8 +3,8 @@ from django.http import HttpResponse
 import datetime
 #from blog.models import TemplateView
 from blog.models import Post, Category, Poems
-from blog.form import PostForm
-from django.shortcuts import redirect
+from blog.form import PostForm, PoemForm
+from django.shortcuts import redirect 
 
 class MyStruct(object): 
 		pass
@@ -27,6 +27,29 @@ def allposts(request, allpostsnum):
 def post_detail(request, post_id):
 	post = get_object_or_404(Post, id=post_id)
 	return render(request, 'post_detail.html', {'post' : post})
+
+
+def post_add(request):
+	if request.method == "POST":
+		form = PostForm(request.POST)
+		if form.is_valid():
+			form.save()
+			return redirect('blog.views.index')
+	else:
+		form = PostForm()
+	return render(request, 'post_add.html', {'form' : form})
+
+
+def post_edit(request, post_id):
+	post = get_object_or_404(Post, id=post_id)
+	if request.method == "POST":
+		form = PostForm(request.POST, instance=post)
+		if form.is_valid():
+			form.save()
+			return redirect('blog.views.index')
+	else:
+		form = PostForm(instance=post)
+	return render(request, 'post_add.html', {'form' : form})
 
 
 # -----def allcategory, categoryDisplay - This functions displays Categories
@@ -60,34 +83,21 @@ def poem(request, poem_id):
 	poem = get_object_or_404(Poems, id=poem_id)
 	return render(request, 'poem.html', {'poem' : poem})
 
+def poem_add(request):
+	# POST or GET method?
+	if request.method == "POST":
+		form = PoemForm(request.POST)
+		if form.is_valid():
+			form.save()
+		return redirect('blog.views.poems')
+	else:
+		form = PoemForm()
+	return render(request, 'poem_add.html', {'form' : form})
+
 
 # -----def sveta_contact - This function displays contacts
 def sveta_contact(request):
 	return render(request, 'sveta_contact.html',)
-
-
-def post_add(request):
-	if request.method == "POST":
-		form = PostForm(request.POST)
-		if form.is_valid():
-			form.save()
-			return redirect('blog.views.index')
-	else:
-		form = PostForm()
-	return render(request, 'post_add.html', {'form' : form})
-
-
-def post_edit(request, post_id):
-	post = get_object_or_404(Post, id=post_id)
-	if request.method == "POST":
-		form = PostForm(request.POST, instance=post)
-		if form.is_valid():
-			form.save()
-			return redirect('blog.views.index')
-	else:
-		form = PostForm(instance=post)
-	return render(request, 'post_add.html', {'form' : form})
-
 
 
 
