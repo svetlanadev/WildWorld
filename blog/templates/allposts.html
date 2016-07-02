@@ -10,7 +10,7 @@
 	<li>
 		<h2>{{ p.title }}</a></h2>
 		<p>Created: {{ p.created }}</p>
-		<p><a class="btn btn-primary btn-lg" href="{% url 'post_detail' post_id=p.id %}" role="button">Дізнатись більше..</a></p>
+		<p><a class="btn btn-primary btn-lg" href="{% url 'blog:post_detail' p.id %}" role="button">Дізнатись більше..</a></p>
 	</li>
 	</div>
 {% endfor %}

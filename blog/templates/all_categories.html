@@ -6,7 +6,7 @@
 	<h2>Тут все Категории:</h2>
 	{% for category in categories %}
 		<div>
-			<p><a href="{% url 'category' category_id=category.id %}">{{ category.name }}</a></p>
+			<p><a href="{% url 'blog:category' category_id=category.id %}">{{ category.name }}</a></p>
 		</div>
 	{% endfor %}		
 </div>

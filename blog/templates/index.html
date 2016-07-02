@@ -3,7 +3,7 @@
 
 
 {% block content %}
-	<p><a class="btn btn-primary btn-lg" href="{% url 'blog.views.post_add'%}" role="button">Добавить новый Пост</a></p>
+	<p><a class="btn btn-primary btn-lg" href="{% url 'blog:post_add' %}" role="button">Добавить новый Пост</a></p>
 	<div>
 	<h3>Последние заметки: </h3>
     {% for post in posts %}	

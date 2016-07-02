@@ -65,7 +65,7 @@ def category(request, category_id):
 		posts = Post.objects.filter(category=category)
 		context_dict['posts'] = posts
 		context_dict['category'] = category
-	except Category.DoesNotExist:
+	except Category.DoesNotExist: 
 		pass
 	return render(request, 'category.html', context_dict)
 
@@ -89,6 +89,7 @@ def poem_add(request):
 		form = PoemForm(request.POST)
 		if form.is_valid():
 			form.save()
+		# return redirect('some-view-name', foo='bar')	
 		return redirect('blog.views.poems')
 	else:
 		form = PoemForm()
@@ -96,8 +97,8 @@ def poem_add(request):
 
 
 # -----def sveta_contact - This function displays contacts
-def sveta_contact(request):
-	return render(request, 'sveta_contact.html',)
+def contact(request):
+	return render(request, 'contact.html',)
 
 
 

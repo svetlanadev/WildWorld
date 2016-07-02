@@ -4,9 +4,9 @@
 
 {% block content %}
 	<p>Любимые стихи:</p>
-	<p><a class="btn btn-primary btn-lg" href="{% url 'poem_add' %}" role="button">Добавить Стих</a></p>
+	<p><a class="btn btn-primary btn-lg" href="{% url 'blog:poem_add' %}" role="button">Добавить Стих</a></p>
 	{% for poem in poems %}
-    	<p><a href="{% url 'poem' poem_id=poem.id %}">"{{poem.title}}"&nbsp;<small><cite title="Source Title">{{poem.author}} </cite></small></a></p>
+    	<p><a href="{% url 'blog:poem' poem.id %}">"{{poem.title}}"&nbsp;<small><cite title="Source Title">{{poem.author}} </cite></small></a></p>
 	{% endfor %}
 	<img src="{% static "blog/images/kalina.jpg" %}" alt="Author Serj"/>
 {% endblock %}

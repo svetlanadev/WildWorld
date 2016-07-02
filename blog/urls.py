@@ -2,11 +2,11 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 from blog import views 
 
-
+app_name = "blog"
 urlpatterns = [
 	url(r'^$', views.index),
 	url(r'^index', views.index, name='index'),
-	url(r'^sveta_contact', views.sveta_contact),
+	url(r'^contact', views.contact, name='contact'),
 	url(r'^allposts/(.*)', views.allposts, name='allposts'),
 	url(r'^post/(?P<post_id>[0-9]+)/$', views.post_detail, name = 'post_detail'),
 	url(r'^post/add/$', views.post_add, name='post_add'),
@@ -21,5 +21,7 @@ urlpatterns = [
     url(r'^(?P<question_id>\d+)/vote/$', views.vote, name="vote"),
     url(r'^test', views.test, name='test')
 ]
+
+#We recommend that you use hyphens (-) instead of underscores (_) in your URLs
  
 

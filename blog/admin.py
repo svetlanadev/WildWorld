@@ -1,7 +1,7 @@
 from django.contrib import admin
-from models import Category
-from models import Post
-from models import Poems
+from .models import Category
+from .models import Post
+from .models import Poems
 
 # Register your models here.
 
