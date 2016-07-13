@@ -15,7 +15,7 @@ def index(request):
 	post = Post.objects.order_by('-created')[:3]
 	categ = Category.objects.all()
 	poems_variable = Poems.objects.all()
-	return render(request, 'index.html', {'posts' : post, 'categories' : categ, 'allpoems' : poems_variable})
+	return render(request, 'index.html', {'posts' : post, 'categories' : categ, 'allpoems' : poems_variable, 'media_base' : settings.MEDIA_URL })
 
 
 # -----def allposts, def post_detail - This functions displays posts
@@ -26,7 +26,7 @@ def allposts(request, allpostsnum):
 
 def post_detail(request, post_id):
 	post = get_object_or_404(Post, id=post_id)
-	return render(request, 'post_detail.html', {'post' : post, 'media_base' : settings.MEDIA_ROOT })
+	return render(request, 'post_detail.html', {'post' : post, 'media_base' : settings.MEDIA_URL })
 
 
 def post_add(request):
