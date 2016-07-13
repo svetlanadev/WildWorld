@@ -1,11 +1,10 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 import datetime
 #from blog.models import TemplateView
 from blog.models import Post, Category, Poems
 from blog.form import PostForm, PoemForm
-from django.shortcuts import redirect 
-
+from django.conf import settings
 
 class MyStruct(object): 
 		pass
@@ -27,7 +26,7 @@ def allposts(request, allpostsnum):
 
 def post_detail(request, post_id):
 	post = get_object_or_404(Post, id=post_id)
-	return render(request, 'post_detail.html', {'post' : post})
+	return render(request, 'post_detail.html', {'post' : post, 'media_base' : settings.MEDIA_ROOT })
 
 
 def post_add(request):
@@ -35,7 +34,7 @@ def post_add(request):
 		form = PostForm(request.POST)
 		if form.is_valid():
 			form.save()
-			return redirect('blog.views.index')
+			return redirect('/index/')
 
         #     # Profile image supplied? If so, we put it in the new UserProfile.
         # if 'image' in request.FILES:
@@ -56,7 +55,7 @@ def post_edit(request, post_id):
 		form = PostForm(request.POST, instance=post)
 		if form.is_valid():
 			form.save()
-			return redirect('blog.views.index')
+			return redirect('/index/')
 	else:
 		form = PostForm(instance=post)
 	return render(request, 'post_add.html', {'form' : form})
@@ -100,7 +99,7 @@ def poem_add(request):
 		if form.is_valid():
 			form.save()
 		# return redirect('some-view-name', foo='bar')	
-		return redirect('blog.views.poems')
+		return redirect('/poems/')
 	else:
 		form = PoemForm()
 	return render(request, 'poem_add.html', {'form' : form})

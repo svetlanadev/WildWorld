@@ -10,10 +10,8 @@
     	<h2 class="blog-post-title">{{ post.title }}</h2>  
 	    <p>Created: {{ post.created}}</p>    	             
         <p>{{ post.body }}</p>
+        <img src="{{media_base}}{{ post.image }}" />
 	{% endfor %}
-
-        <img src="{{ post.image.url }}" />	
-
 
 	</div>
 ---------------------------------------------
@@ -26,4 +24,4 @@
 
 ---------------------------------------------
 
-{% endblock %}   
+{% endblock %}    
