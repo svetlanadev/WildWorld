@@ -11,8 +11,11 @@
 	    <p>Created: {{ post.created}}</p>    	             
         <p>{{ post.body }}</p>
 	{% endfor %}
-	</div>
 
+        <img src="{{ post.image.url }}" />	
+
+
+	</div>
 ---------------------------------------------
 <h4><a href="#">Добавить новую Категорию</a></h4>
 {% for category in categories %}

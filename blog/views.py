@@ -6,6 +6,7 @@ from blog.models import Post, Category, Poems
 from blog.form import PostForm, PoemForm
 from django.shortcuts import redirect 
 
+
 class MyStruct(object): 
 		pass
 
@@ -35,9 +36,18 @@ def post_add(request):
 		if form.is_valid():
 			form.save()
 			return redirect('blog.views.index')
+
+        #     # Profile image supplied? If so, we put it in the new UserProfile.
+        # if 'image' in request.FILES:
+        #     post.image = request.FILES['image']
+        #     # Now we save the model instance!
+        # 	post.save()
+        #     # We can say registration was successful.
+        #     registered = True			
 	else:
 		form = PostForm()
 	return render(request, 'post_add.html', {'form' : form})
+
 
 
 def post_edit(request, post_id):

@@ -22,7 +22,7 @@ class Post(models.Model):
 	body = models.TextField()
 	status = models.CharField(max_length=1, choices=BLOG_ITEM_STATUS, default='0')
 	url = models.URLField(blank=True)
-	# image = models.ImageField(upload_to='PostImage', blank=True)	
+	image = models.ImageField(upload_to='post_image', blank=True)	
 	views = models.IntegerField(default=0)
 	# likes = models.IntegerField(default=0)
 	updated = models.DateTimeField(auto_now=True)

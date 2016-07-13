@@ -18,12 +18,16 @@ from django.contrib import admin
 from blog import views
 from django.views.generic import TemplateView
 from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
-    url(r'^admin/', include(admin.site.urls)),
+	url(r'^admin/', include(admin.site.urls)),
     url(r'', include('blog.urls')),
-]
+] 
 
-
-
-
+# if settings.DEBUG:
+# 	urlpatterns += patterns('',
+# 		url(r'^media/(?P<path>.*)$', 'django.views.static.serve',{
+# 			'document_root' : settings.MEDIA_ROOT
+# 		}),
+# 	)
