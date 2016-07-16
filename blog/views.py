@@ -1,10 +1,12 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.http import HttpResponse
-import datetime
-#from blog.models import TemplateView
+from django.http import HttpResponse, HttpResponseRedirect
 from blog.models import Post, Category, Poems
-from blog.form import PostForm, PoemForm
+from blog.form import PostForm, PoemForm, UserForm, UserProfileForm
 from django.conf import settings
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
+import datetime
+
 
 class MyStruct(object): 
 		pass
@@ -108,6 +110,61 @@ def poem_add(request):
 # -----def sveta_contact - This function displays contacts
 def contact(request):
 	return render(request, 'contact.html',)
+
+
+# -----def  - This functions create users
+def register(request):
+    registered = False
+    if request.method == "POST":
+        user_form = UserForm(data=request.POST)
+        profile_form = UserProfileForm(data=request.POST)
+        if user_form.is_valid() and profile_form.is_valid():
+            user = user_form.save() 
+            user.set_password(user.password)
+            user.save()
+            profile = profile_form.save(commit=False)
+            profile.user = user
+            if 'profile_picture' in request.FILES:
+                profile_picture = request.FILES['profile_picture']
+            profile.save()
+            registered = True
+        else:
+            print (user_form.errors, profile_form.errors)
+    else:
+        user_form = UserForm()
+        profile_form = UserProfileForm()
+    return render(request, 
+        'register.html',
+        {'user_form' : user_form, 'profile_form' : profile_form, 'registered' : registered} )
+
+def user_login(request):
+    if request.method == "POST":
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(username=username, password=password)
+        if user:
+            if user.is_active:
+                login(request, user)
+                return HttpResponseRedirect('/index/')
+            else:
+                return HttpResponse("Your Rango account is disabled.")
+        else:
+            print("Invalid login details: {0}, {1}".format(username, password))
+            return HttpResponse("Invalid login details supplied.")				
+    else:
+        return render(request, 'login.html', {})
+
+@login_required
+def registered(request):
+	return HttpResponse("You see it if you are registered")
+
+@login_required
+def user_logout(request):
+	logout(request)
+	return HttpResponseRedirect('/index/')	
+
+
+
 
 
 

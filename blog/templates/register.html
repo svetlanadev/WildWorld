@@ -1,0 +1,26 @@
+{% extends "index.html" %}
+{% load staticfiles %}
+
+{% block content %}
+	{% if registered %}
+	<p>"Поздравляем! Спасибо за регистрацию."</p>
+	<a href="/index/">Вернуться на Главную</a>	
+	{% else %}
+	<h2>"Зарегистрируйтесь с "My cool Django Blog"</h2>
+	<div class="col-md-14">
+		<div class="panel panel-default">
+       	<div class="panel-body">	
+		<form  id="user_form" method="post" enctype="multipart/form-data">
+		{% csrf_token %}
+			<fieldset>
+				{{ user_form.as_p }}
+				{{ profile_form.as_p }}
+			</fieldset>
+			<button class="btn btn-lg btn-primary btn-block btn-signin" type="submit" value="register">Зарегистрироваться</button>
+		</form>
+		</div> <!--/.psnel-body -->
+		</div> <!--/.panel-default -->
+	</div>	 <!--/. col-md-6 -->
+	{% endif %}
+{% endblock %}
+
