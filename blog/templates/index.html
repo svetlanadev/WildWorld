@@ -3,15 +3,34 @@
 
 
 {% block content %}
-	<p><a class="btn btn-primary btn-lg" href="{% url 'blog:post_add' %}" role="button">Добавить новый Пост</a></p>
-	<div>
-	<h3>Последние заметки: </h3>
-    {% for post in posts %}	
-    	<h2 class="blog-post-title">{{ post.title }}</h2>  
-	    <p>Created: {{ post.created}}</p>    	             
-        <p>{{ post.body }}</p>
-        <img src="{{media_base}}{{ post.image }}"  alt="post_image" width="700" height="394" />
-	{% endfor %}
+<div class="row">
+    {% if user.is_authenticated %}
+        <p>Hello, <bold>{{ user.username }}</bold> in Wild World!</p>
+        <a href="/logout/">Выйти..</a>
+    {% else %}
+        <p>Hello, Wild World!</p>
+        <a href="/register/">Register here..></a>
+        <a href="/login/">LogIn..</a>
+    {% endif %}
+    
+	{% if user.is_authenticated %}
+		<p><a class="btn btn-primary btn-lg" href="{% url 'blog:post_add' %}" role="button">Добавить новый Пост</a></p>
+		<h3>Последние заметки: </h3>
+    	{% for post in posts %}	
+	    	<h2 class="blog-post-title">{{ post.title }}</h2>  
+	    	<p>Created: {{ post.created}}</p>    	             
+        	<p>{{ post.body }}</p>
+        	<img src="{{media_base}}{{ post.image }}"  alt="post_image" width="700" height="394" />
+		{% endfor %}	 	        			
+	{% else %}	
+		<h3>Последние заметки: </h3>
+    	{% for post in posts %}	
+	    	<h2 class="blog-post-title">{{ post.title }}</h2>  
+	    	<p>Created: {{ post.created}}</p>    	             
+        	<p>{{ post.body }}</p>
+        	<img src="{{media_base}}{{ post.image }}"  alt="post_image" width="700" height="394" />
+		{% endfor %}
+	{% endif %}
 
 	</div>
 ---------------------------------------------
