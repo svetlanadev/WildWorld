@@ -1,6 +1,10 @@
 {% extends "index.html" %}
 {% load staticfiles %}
 
+{% block title %}
+    {{ category.name }}
+{% endblock %}
+
 {% block content %}
     <h1>{{ category.name }}</h1>
         {% if category %}

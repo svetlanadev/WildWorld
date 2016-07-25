@@ -1,6 +1,10 @@
 {% extends "index.html" %}
 {% load staticfiles %}
 
+{% block title %}
+    Регистрация
+{% endblock %}
+
 {% block content %}
 	{% if registered %}
 	<p>"Поздравляем! Спасибо за регистрацию."</p>

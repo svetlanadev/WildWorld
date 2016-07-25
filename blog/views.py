@@ -17,7 +17,22 @@ def index(request):
 	post = Post.objects.order_by('-created')[:3]
 	categ = Category.objects.all()
 	poems_variable = Poems.objects.all()
+	visits = int(request.COOKIES.get('visits',1))
+	reset_last_visit_time = False
 	return render(request, 'index.html', {'posts' : post, 'categories' : categ, 'allpoems' : poems_variable, 'media_base' : settings.MEDIA_URL })
+ #    if 'last_visit' in request.COOKIES():
+ #    	last_visit = request.COOKIES['last_visit']
+ #    	last_visit_time = datetime.strptime(last_visit[:-7], "%Y-%m-%d %H:%M:%S"))
+ #        if (datetime.now() - last_visit_time).days > 0):
+	#         visits = visits + 1
+	#         reset_last_visit_time = True
+	# else:
+	# 	reset_last_visit_time = True
+	# 	context_dict['visits'] = visits
+	# 	response = render(request, 'index.html', context_dict)
+ #    if reset_last_visit_time:
+ #    	response.set.cookie('last_visit_time', datatime.now())
+ #    	response.set.cookie('visits', visits)
 
 
 # -----def allposts, def post_detail - This functions displays posts
@@ -109,12 +124,12 @@ def poem_add(request):
 
 # -----def sveta_contact - This function displays contacts
 def contact(request):
-	return render(request, 'contact.html',)
+	return render(request, 'contact.html', {})
 
 
 # -----def  - This functions create users
 def register(request):
-    registered = False
+    registered=False
     if request.method == "POST":
         user_form = UserForm(data=request.POST)
         profile_form = UserProfileForm(data=request.POST)
@@ -135,7 +150,7 @@ def register(request):
         profile_form = UserProfileForm()
     return render(request, 
         'register.html',
-        {'user_form' : user_form, 'profile_form' : profile_form, 'registered' : registered} )
+  	    {'user_form' : user_form, 'profile_form' : profile_form, 'registered' : registered} )
 
 def user_login(request):
     if request.method == "POST":

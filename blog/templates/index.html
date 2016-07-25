@@ -1,17 +1,21 @@
 {% extends "base.html" %}
 {% load staticfiles %}
 
+{% block title %}
+   Главная
+{% endblock %}
 
 {% block content %}
-<div class="row">
-    {% if user.is_authenticated %}
-        <p>Hello, <bold>{{ user.username }}</bold> in Wild World!</p>
+<div>
+	<br/>
+<!--     {% if user.is_authenticated %}
+        <p>{{ user.username }}, добро пожаловать в Wild World!</p>
         <a href="/logout/">Выйти..</a>
     {% else %}
-        <p>Hello, Wild World!</p>
+        <p>Добро пожаловать в Wild World!</p>
         <a href="/register/">Register here..></a>
         <a href="/login/">LogIn..</a>
-    {% endif %}
+    {% endif %} -->
     
 	{% if user.is_authenticated %}
 		<p><a class="btn btn-primary btn-lg" href="{% url 'blog:post_add' %}" role="button">Добавить новый Пост</a></p>
@@ -19,7 +23,10 @@
     	{% for post in posts %}	
 	    	<h2 class="blog-post-title">{{ post.title }}</h2>  
 	    	<p>Created: {{ post.created}}</p>    	             
-        	<p>{{ post.body }}</p>
+        	<p>
+        	    {% autoescape off %}
+        	        {{ post.body }}
+        	    {% endautoescape %}
         	<img src="{{media_base}}{{ post.image }}"  alt="post_image" width="700" height="394" />
 		{% endfor %}	 	        			
 	{% else %}	

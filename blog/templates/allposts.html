@@ -1,8 +1,9 @@
-{% extends "index.html" %}
+{% extends "base.html" %}
+{% load staticfiles %}
 
 {% block content %}
 <div>
-	<h2>Тут находяться все наши посты:</h2>
+	<h2>Все посты:</h2>
 
 <ul>
 {% for p in posts %}

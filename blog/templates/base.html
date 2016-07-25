@@ -5,10 +5,11 @@
 	<head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="{% static "blog/css/style.css" %}"/ type="text/css">
-    <title> My Cool Django Blog </title>
+    <title> Wild world -{% block title %} My Cool Django Blog  {% endblock %}</title>
+    <link rel="shortcut icon" href="{% static "blog/images/w25.gif" %}" type="image/jpg">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <style id="holderjs-style" type="text/css"></style>
-    </head>
+  </head>
 
   <body>
     <div class="blog-masthead">
@@ -17,10 +18,20 @@
           <a class="blog-nav-item active" href="/index/">Главная</a>
           <a class="blog-nav-item" href="/allposts/">Все посты</a>
           <a class="blog-nav-item" href="/allcategory/">Все категории</a>
-          <a class="blog-nav-item" href="/poems/">Любимые стихи</a>
-          <a class="blog-nav-item" href="/contact/">Наши контакты</a>
-          <a class="blog-nav-item" href="/register/" >Регистрация</a>
-          <a class="blog-nav-item" href="/login/" >Войти..</a>    
+<!--           <a class="blog-nav-item" href="/poems/">Любимые стихи</a>
+ -->          <a class="blog-nav-item" href="/contact/">Наши контакты</a>
+<!--           <a class="blog-nav-item" href="/register/" >Регистрация</a>
+          <a class="blog-nav-item" href="/login/" >Войти..</a>  --> 
+          <a class="blog-nav-item"
+            {% if user.is_authenticated %}
+                <p>{{ user.username }}, добро пожаловать в Wild World!</p>
+                <a href="/logout/">Выйти..</a>
+            {% else %}
+                <p>Добро пожаловать в Wild World!</p>
+                <a href="/register/">Регистрация тут..></a>
+                <a href="/login/">Войти</a>
+            {% endif %}  
+          </a>
         </nav>
       </div>
     </div>
@@ -38,11 +49,8 @@
       </blockquote>
     </div>
 
-
     <div class="row">
-
         <div class="col-sm-8 blog-main">
-        </div>
           <div class="blog-post">
             {% block page %}
               {% block content %}
@@ -59,9 +67,11 @@
 
         <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
           <div class="sidebar-module sidebar-module-inset">
-            <h4>Our friends</h4>
-            <p>Each of you knows that we so much love to travel. On this blog we will share with you some news and interesting articles.<br/><em>Serge&Svet</em></p>
-            <img src="{% static "blog/images/travel-quote.jpg" %}" alt="Picture1"/>
+<!--             <h4>Our friends</h4> -->
+<!--             <p>Each of you knows that we so much love to travel. On this blog we will share with you some news and interesting articles.<br/><em>Serge&Svet</em></p> -->
+            <h4>Друзья</h4>
+            <p>не могу пока придумать <br/><em>Serge&Svet</em></p>
+            <img src="{% static "blog/images/bike.jpg" %}" alt="Picture1" width="261" height="147"/>
           </div>
           <div class="sidebar-module">
             <h4>Archives</h4>

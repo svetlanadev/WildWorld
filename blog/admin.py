@@ -1,17 +1,26 @@
 from django.contrib import admin
-from .models import Category
-from .models import Post
-from .models import Poems
-from .models import UserProfile
+from django import forms
+from ckeditor.widgets import CKEditorWidget
+from ckeditor_uploader.widgets import CKEditorUploadingWidget
+from .models import Category, Post, Poems, UserProfile
 
 # Register your models here.
+
+class PostAdminForm(forms.ModelForm):
+
+    body = forms.CharField(widget=CKEditorWidget())
+    body = forms.CharField(widget=CKEditorUploadingWidget())
+
+    class Meta:
+        model = Post
+        fields = '__all__'
 
 
 
 class PostAdmin(admin.ModelAdmin):
-	list_display = ['title', 'category', 'status']
+	list_display = ['title', 'category', 'created', 'status']
 	date_hierarchy = 'updated'
-	ordering = ['title']
+	ordering = ['created']
 	actions = ['make_published', 'make_draft', 'make_not_published']
 
 	def make_draft(self, request, queryset):
@@ -26,9 +35,10 @@ class PostAdmin(admin.ModelAdmin):
 			message_bit = '%s stories were' % rows_updated
 		self.message_user(request, '%s successfully marked as published.' % message_bit)
 	make_published.short_description = "Mark selected stories as published"
+	form = PostAdminForm
 
 
 admin.site.register(Category)
 admin.site.register(Post, PostAdmin)
-admin.site.register(Poems)
+# admin.site.register(Poems)
 admin.site.register(UserProfile)

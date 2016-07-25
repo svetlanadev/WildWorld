@@ -1,6 +1,10 @@
 {% extends "index.html" %}
 {% load staticfiles %}
 
+{% block title %}
+    {{ post.title }}
+{% endblock %}
+
 {% block content %}
 {% if user.is_authenticate %}
 	<a class="btn btn-default" href="{% url 'blog:post_edit' post_id=post.id%}"><span class="glyphicon glyphicon-pencil"></span></a>
@@ -9,7 +13,12 @@
     <img src="{{ media_base }}{{  post.image }} "  alt="post_image" width="700" height="394" />	
 {% else %}
     <h1>Title: {{ post.title }}</h1>
-    <p>Body: {{ post.body|linebreaks }}</p> 
+
+    <p>
+        {% autoescape off %}
+            Body: {{ post.body|linebreaks }} 
+        {% endautoescape %}
+    </p>
     <img src="{{ media_base }}{{  post.image }} "  alt="post_image" width="700" height="394" />
 {% endif %}
 {% endblock %}

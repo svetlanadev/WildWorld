@@ -38,6 +38,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
+    'ckeditor',
+    # 'ckeditor_uploader',
     'blog',
 )
 
@@ -113,3 +115,29 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = '/media/'
 
 LOGIN_URL = '/login/'
+
+
+
+
+# CKEDITOR_UPLOAD_PATH = 'plugin/ckeditor/'
+CKEDITOR_UPLOAD_PATH = "uploads/"
+CKEDITOR_JQUERY_URL = 'https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'
+
+CKEDITOR_UPLOAD_SLUGIFY_FILENAME = False
+CKEDITOR_RESTRICT_BY_USER = True
+CKEDITOR_BROWSE_SHOW_DIRS = True
+CKEDITOR_IMAGE_BACKEND = "pillow"
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'full',
+        'height': '100%',
+        'width': '100%',
+    },
+    # 'basic': {
+    #     'toolbar': 'Basic',
+    #     'height': '100%',
+    #     'width': '100%',
+    # },
+}
+

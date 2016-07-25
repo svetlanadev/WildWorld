@@ -1,6 +1,10 @@
 {% extends "index.html" %}
 {% load staticfiles %}
 
+{% block title %}
+    Войти..
+{% endblock %}
+
 {% block content %}
 <form method="post">{% csrf_token %}
 	Username: <input type="text" name="username" value="" size="50" />
