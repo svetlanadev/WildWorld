@@ -21,32 +21,40 @@
 		<p><a class="btn btn-primary btn-lg" href="{% url 'blog:post_add' %}" role="button">Добавить новый Пост</a></p>
 		<h3>Последние заметки: </h3>
     	{% for post in posts %}	
-	    	<h2 class="blog-post-title">{{ post.title }}</h2>  
-	    	<p>Created: {{ post.created}}</p>    	             
-        	<p>
+	    	<h2 class="blog-post-title">{{ post.title }}</h2> 
+	    	<a href="#">{{ post.category }}</a> 
+            <p>Автор: <a href='#'>{{ post.author }}</a></p>
+	    	<p>Дата создания: {{ post.created}}</p>
+           	<p>
         	    {% autoescape off %}
         	        {{ post.body }}
         	    {% endautoescape %}
+        	</p>
         	<img src="{{media_base}}{{ post.image }}"  alt="post_image" width="700" height="394" />
 		{% endfor %}	 	        			
 	{% else %}	
 		<h3>Последние заметки: </h3>
     	{% for post in posts %}	
 	    	<h2 class="blog-post-title">{{ post.title }}</h2>  
-	    	<p>Created: {{ post.created}}</p>    	             
-        	<p>{{ post.body }}</p>
+	    	<p><a href="/allcategory/">{{ post.category }}</a>  Автор: <a href='#'>{{ post.author }}</a></p>
+	    	<p>Дата создания: {{ post.created}}</p>           
+        	<p>
+                {% autoescape off %}
+        	        {{ post.body }}
+        	    {% endautoescape %}
+        	</p>
         	<img src="{{media_base}}{{ post.image }}"  alt="post_image" width="700" height="394" />
 		{% endfor %}
 	{% endif %}
 
 	</div>
 ---------------------------------------------
-<h4><a href="#">Добавить новую Категорию</a></h4>
+<!-- <h4><a href="#">Добавить новую Категорию</a></h4>
 {% for category in categories %}
 	<div>
 		<a href="/category/{{ category.id }}">Категория {{ category.name }}</a>
 	</div>
-{% endfor %}
+{% endfor %} -->
 
 ---------------------------------------------
 

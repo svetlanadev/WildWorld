@@ -4,7 +4,7 @@
 
 {% block content %} 
 <div>
-	<h2>Тут все Категории:</h2>
+	<h2>Тут все Путешествия:</h2>
 	{% for category in categories %}
 		<div>
 			<p><a href="{% url 'blog:category' category_id=category.id %}">{{ category.name }}</a></p>

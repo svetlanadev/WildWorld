@@ -1,5 +1,6 @@
 *.pyc
 __pycache__
 myapp
+/.idea
 db.sqlite3
 .DS_Store

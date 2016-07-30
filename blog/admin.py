@@ -39,6 +39,6 @@ class PostAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Category)
+admin.site.register(UserProfile)
 admin.site.register(Post, PostAdmin)
 # admin.site.register(Poems)
-admin.site.register(UserProfile)
