@@ -16,9 +16,17 @@ BLOG_ITEM_STATUS = (
 	('2', 'Not Published'),
 )
 
+class UserProfile(models.Model):
+	user = models.OneToOneField(User)
+	location = models.CharField(max_length=50, blank=True)
+	profile_picture = models.ImageField(upload_to="profile_image", blank=True)
+
+	def __str__(self):
+		return self.user.username
+
 class Post(models.Model):
 	category = models.ForeignKey(Category)
-#	author = models.ForeignKey(User)
+	author = models.ForeignKey(UserProfile)
 	title = models.CharField(max_length=128)
 	body = models.TextField()
 	status = models.CharField(max_length=1, choices=BLOG_ITEM_STATUS, default='0')
@@ -42,10 +50,3 @@ class Poems(models.Model):
 		return self.title 
 
 
-class UserProfile(models.Model):
-	user = models.OneToOneField(User)
-	location = models.CharField(max_length=50, blank=True)
-	profile_picture = models.ImageField(upload_to="profile_image", blank=True)
-
-	def __str__(self):
-		return self.user.username

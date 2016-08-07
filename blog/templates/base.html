@@ -17,7 +17,7 @@
         <nav class="blog-nav">
           <a class="blog-nav-item active" href="/index/">Главная</a>
           <a class="blog-nav-item" href="/allposts/">Все посты</a>
-          <a class="blog-nav-item" href="/allcategory/">Все категории</a>
+          <a class="blog-nav-item" href="/allcategory/">Все Путешествия</a>
 <!--           <a class="blog-nav-item" href="/poems/">Любимые стихи</a>
  -->          <a class="blog-nav-item" href="/contact/">Наши контакты</a>
 <!--           <a class="blog-nav-item" href="/register/" >Регистрация</a>
@@ -67,26 +67,23 @@
 
         <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
           <div class="sidebar-module sidebar-module-inset">
-<!--             <h4>Our friends</h4> -->
-<!--             <p>Each of you knows that we so much love to travel. On this blog we will share with you some news and interesting articles.<br/><em>Serge&Svet</em></p> -->
-            <h4>Друзья</h4>
-            <p>не могу пока придумать <br/><em>Serge&Svet</em></p>
-            <img src="{% static "blog/images/bike.jpg" %}" alt="Picture1" width="261" height="147"/>
+            <h4>Our friends</h4>
+            <p>Each of you knows that we so much love to travel. On this blog we will share with you some news and interesting articles.<br/><em>Serge&Svet</em></p>
+            <img src="{% static "blog/images/bike-quote1.jpg" %}" alt="Picture1" width="261" height="147"/>
           </div>
+
           <div class="sidebar-module">
-            <h4>Archives</h4>
+            <h4>Путешествия:</h4>
             <ol class="list-unstyled">
-              <li><a href="#">February 2016</a></li>
-              <li><a href="#">January 2016</a></li>
-              <li><a href="#">December 2015</a></li>
-              <li><a href="#">November 2015</a></li>
-              <li><a href="#">October 2015</a></li>
-              <li><a href="#">September 2015</a></li>
-              <li><a href="#">August 2015</a></li>
-              <li><a href="#">July 2013</a></li>
-              <li><a href="#">June 2015</a></li>
+<!--               <li>testing func</li> -->
+              <!-- This sircle doesn't displays. Need to fix!! -->              
+              <li>
+                 {% for category in categories %}
+                    <a href="/category/{{ category.id }}">{{ category.name }}</a>&nbsp;
+                 {% endfor %}
+              </li>
             </ol>
-          </div>
+          </div>   
           <div class="sidebar-module">
             <h4>Elsewhere</h4>
             <ol class="list-unstyled">
@@ -112,7 +109,3 @@
 
 </body>
 </html>
-
-
-          <!--  <h2 class="blog-post-title">Sample blog post</h2>
-            <p class="blog-post-meta">January 1, 2014 by <a href="#">Mark</a></p> -->

@@ -41,28 +41,34 @@ def allposts(request, allpostsnum):
 	return render(request, 'allposts.html', {'posts' : post})
 
 
-def post_detail(request, post_id):
+def post_detail(request, post_id): 
 	post = get_object_or_404(Post, id=post_id)
 	return render(request, 'post_detail.html', {'post' : post, 'media_base' : settings.MEDIA_URL })
 
 
 def post_add(request):
+	postAdded = False
+	author = request.user
 	if request.method == "POST":
 		form = PostForm(request.POST)
 		if form.is_valid():
-			form.save()
-			return redirect('/index/')
-
-        #     # Profile image supplied? If so, we put it in the new UserProfile.
-        # if 'image' in request.FILES:
-        #     post.image = request.FILES['image']
-        #     # Now we save the model instance!
-        # 	post.save()
-        #     # We can say registration was successful.
-        #     registered = True			
+			postAdded = True
+			instance = form.save(commit=False)
+			instance.author = author
+			instance.save()
+		else:
+			print(form.errors)
+		return redirect('/index/')
+            # Profile image supplied? If so, we put it in the new UserProfile.
+          #       if 'image' in request.FILES:
+          #   	post.image = request.FILES['image']
+          #   	# Now we save the model instance!
+        		# post.save()
+          #   	# We can say registration was successful.
+          #   	registered = True			
 	else:
 		form = PostForm()
-	return render(request, 'post_add.html', {'form' : form})
+	return render(request, 'post_add.html', {'form' : form, 'postAdded' : postAdded })
 
 
 
