@@ -9,7 +9,7 @@
 {% if user.is_authenticate %}
 	<a class="btn btn-default" href="{% url 'blog:post_edit' post_id=post.id%}"><span class="glyphicon glyphicon-pencil"></span></a>
     <h1>Title: {{ post.title }}</h1>
-	<p><a href="/allcategory/">{{ post.category }}</a>  Автор: <a href='#'>{{ post.author }}</a></p>
+	<p><a href="/allcategory/">{{ post.category }}</a></p>
 	<p>Дата создания: {{ post.created}}</p>     
     <p>
         {% autoescape off %}
@@ -19,7 +19,8 @@
     <img src="{{ media_base }}{{  post.image }} "  alt="post_image" width="700" height="394" />	
 {% else %}
     <h1>Title: {{ post.title }}</h1>
-	<p><a href="/allcategory/">{{ post.category }}</a>  Автор: <a href='#'>{{ post.author }}</a></p>
+	<p><a href="/allcategory/">{{ post.category }}</a></p>
+        <!--Автор: <a href='#'>{{ post.author }}</a>-->
 	<p>Дата создания: {{ post.created}}</p>  
     <p>
         {% autoescape off %}

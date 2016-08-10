@@ -23,7 +23,7 @@
     	{% for post in posts %}	
 	    	<h2 class="blog-post-title">{{ post.title }}</h2> 
 	    	<a href="#">{{ post.category }}</a> 
-            <p>Автор: <a href='#'>{{ post.author }}</a></p>
+            <!--<p>Автор: <a href='#'>{{ post.author }}</a></p>-->
 	    	<p>Дата создания: {{ post.created}}</p>
            	<p>
         	    {% autoescape off %}
@@ -36,7 +36,8 @@
 		<h3>Последние заметки: </h3>
     	{% for post in posts %}	
 	    	<h2 class="blog-post-title">{{ post.title }}</h2>  
-	    	<p><a href="/allcategory/">{{ post.category }}</a>  Автор: <a href='#'>{{ post.author }}</a></p>
+	    	<p><a href="/allcategory/">{{ post.category }}</a></p>
+				<!--<p></p>Автор: <a href='#'>{{ post.author }}</a></p>-->
 	    	<p>Дата создания: {{ post.created}}</p>           
         	<p>
                 {% autoescape off %}

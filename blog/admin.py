@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django import forms
 from ckeditor.widgets import CKEditorWidget
+from ckeditor_uploader.widgets import CKEditorUploadingWidget
 from .models import Category, Post, Poems, UserProfile
 
 # Register your models here.
@@ -8,7 +9,7 @@ from .models import Category, Post, Poems, UserProfile
 class PostAdminForm(forms.ModelForm):
 
     body = forms.CharField(widget=CKEditorWidget())
-    # body = forms.CharField(widget=CKEditorUploadingWidget())
+    body = forms.CharField(widget=CKEditorUploadingWidget())
 
     class Meta:
         model = Post

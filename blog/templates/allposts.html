@@ -10,7 +10,8 @@
 	<div>
 	<li>
 		<h2>{{ p.title }}</a></h2>
-		<p><a href="/allcategory/">{{ p.category }}</a>  Автор: <a href='#'>{{ p.author }}</a></p>
+		<p><a href="/allcategory/">{{ p.category }}</a></p>
+			<!--Автор: <a href='#'>{{ p.author }}</a>-->
 	    <p>Дата создания: {{ p.created}}</p>  	
 		<p><a class="btn btn-primary btn-lg" href="{% url 'blog:post_detail' p.id %}" role="button">Дізнатись більше..</a></p>
 	</li>
