@@ -20,8 +20,7 @@
 {% else %}
     <h1>Title: {{ post.title }}</h1>
 	<p><a href="/allcategory/">{{ post.category }}</a></p>
-        <!--Автор: <a href='#'>{{ post.author }}</a>-->
-	<p>Дата создания: {{ post.created}}</p>  
+	<p>Дата создания: {{ post.created}}</p>
     <p>
         {% autoescape off %}
             Body: {{ post.body|linebreaks }} 
