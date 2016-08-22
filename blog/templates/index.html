@@ -8,21 +8,12 @@
 {% block content %}
 <div>
 	<br/>
-<!--     {% if user.is_authenticated %}
-        <p>{{ user.username }}, добро пожаловать в Wild World!</p>
-        <a href="/logout/">Выйти..</a>
-    {% else %}
-        <p>Добро пожаловать в Wild World!</p>
-        <a href="/register/">Register here..></a>
-        <a href="/login/">LogIn..</a>
-    {% endif %} -->
-    
 	{% if user.is_authenticated %}
-		<p><a class="btn btn-primary btn-lg" href="{% url 'blog:post_add' %}" role="button">Добавить новый Пост</a></p>
+		<a class="btn btn-primary btn-lg" href="{% url 'blog:post_add' %}" role="button">Добавить новый Пост</a>
 		<h3>Последние заметки: </h3>
     	{% for post in posts %}	
 	    	<h2 class="blog-post-title">{{ post.title }}</h2> 
-	    	<a href="#">{{ post.category }}</a> 
+	    	<a href="#">{{ post.category }}</a>
 	    	<p>Дата создания: {{ post.created}}</p>
            	<p>
         	    {% autoescape off %}
@@ -30,7 +21,7 @@
         	    {% endautoescape %}
         	</p>
         	<img src="{{media_base}}{{ post.image }}"  alt="post_image" width="700" height="394" />
-		{% endfor %}	 	        			
+		{% endfor %}
 	{% else %}	
 		<h3>Последние заметки: </h3>
     	{% for post in posts %}	
@@ -43,10 +34,11 @@
         	    {% endautoescape %}
         	</p>
         	<img src="{{media_base}}{{ post.image }}"  alt="post_image" width="700" height="394" />
-		{% endfor %}
+	    {% endfor %}
 	{% endif %}
 
 	</div>
+
 ---------------------------------------------
 <!-- <h4><a href="#">Добавить новую Категорию</a></h4>
 {% for category in categories %}
@@ -56,5 +48,4 @@
 {% endfor %} -->
 
 ---------------------------------------------
-
-{% endblock %}    
+{% endblock %}

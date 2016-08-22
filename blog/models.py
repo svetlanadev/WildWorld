@@ -50,3 +50,11 @@ class Poems(models.Model):
 		return self.title 
 
 
+class Comment(models.Model):
+	created = models.DateTimeField(auto_now=True)
+	author = models.ForeignKey(UserProfile)
+	body = models.TextField()
+	post = models.ForeignKey(Post)
+
+	def ___str__(self):
+		return ( "%s: %s" % (self.post, self.body[:60]))

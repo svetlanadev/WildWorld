@@ -2,9 +2,12 @@ from django.contrib import admin
 from django import forms
 from ckeditor.widgets import CKEditorWidget
 from ckeditor_uploader.widgets import CKEditorUploadingWidget
-from .models import Category, Post, Poems, UserProfile
+from .models import Category, Post, Poems, UserProfile, Comment
 
 # Register your models here.
+class CommentAdmin(admin.ModelAdmin):
+	list_display = ['post', 'author', 'created']
+
 
 class PostAdminForm(forms.ModelForm):
 
@@ -14,7 +17,6 @@ class PostAdminForm(forms.ModelForm):
     class Meta:
         model = Post
         fields = '__all__'
-
 
 
 class PostAdmin(admin.ModelAdmin):
@@ -41,4 +43,5 @@ class PostAdmin(admin.ModelAdmin):
 admin.site.register(Category)
 admin.site.register(UserProfile)
 admin.site.register(Post, PostAdmin)
+admin.site.register(Comment, CommentAdmin)
 # admin.site.register(Poems)

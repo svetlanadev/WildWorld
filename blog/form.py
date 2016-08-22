@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
-from .models import Post, Poems, UserProfile
+from .models import Post, Poems, UserProfile, Comment, Category
 
 class PostForm(forms.ModelForm):
 	class Meta:
@@ -24,3 +24,13 @@ class UserProfileForm(forms.ModelForm):
 	class Meta:
 		model = UserProfile
 		fields = ('location', 'profile_picture',)
+
+class CommentForm(forms.ModelForm):
+	class Meta:
+		model = Comment
+		exclude = ["post"]
+
+class CategoryForm(forms.ModelForm):
+	class Meta:
+		model = Category
+		fields = ('name',)

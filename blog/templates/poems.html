@@ -7,7 +7,7 @@
 
 {% block content %}
 	<p>Любимые стихи:</p>
-	{% if user.is_authenticate %}
+	{% if user.is_authenticated %}
 		<p><a class="btn btn-primary btn-lg" href="{% url 'blog:poem_add' %}" role="button">Добавить Стих</a></p>
 		{% for poem in poems %}
     		<p><a href="{% url 'blog:poem' poem.id %}">"{{poem.title}}"&nbsp;<small><cite title="Source Title">{{poem.author}} </cite></small></a></p>

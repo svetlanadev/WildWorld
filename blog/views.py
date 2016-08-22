@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
-from blog.models import Post, Category, Poems
-from blog.form import PostForm, PoemForm, UserForm, UserProfileForm
+from blog.models import Post, Category, Poems, Comment
+from blog.form import PostForm, PoemForm, UserForm, UserProfileForm, CommentForm, CategoryForm
 from django.conf import settings
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -12,63 +12,28 @@ class MyStruct(object):
 		pass
 
 
-# -----def index - Home page 
 def index(request):
 	post = Post.objects.order_by('-created')[:3]
 	categ = Category.objects.all()
+	comment = Comment.objects.filter(post=post)
 	poems_variable = Poems.objects.all()
-	visits = int(request.COOKIES.get('visits',1))
-	reset_last_visit_time = False
-	return render(request, 'index.html', {'posts' : post, 'categories' : categ, 'allpoems' : poems_variable, 'media_base' : settings.MEDIA_URL })
- #    if 'last_visit' in request.COOKIES():
- #    	last_visit = request.COOKIES['last_visit']
- #    	last_visit_time = datetime.strptime(last_visit[:-7], "%Y-%m-%d %H:%M:%S"))
- #        if (datetime.now() - last_visit_time).days > 0):
-	#         visits = visits + 1
-	#         reset_last_visit_time = True
-	# else:
-	# 	reset_last_visit_time = True
-	# 	context_dict['visits'] = visits
-	# 	response = render(request, 'index.html', context_dict)
- #    if reset_last_visit_time:
- #    	response.set.cookie('last_visit_time', datatime.now())
- #    	response.set.cookie('visits', visits)
-
+	return render(request, 'index.html', {'posts' : post, 'categories' : categ, 'comments' : comment, 'allpoems' : poems_variable, 'media_base' : settings.MEDIA_URL })
 
 # -----def allposts, def post_detail - This functions displays posts
 def allposts(request, allpostsnum):
 	post = Post.objects.order_by('-created')
-	return render(request, 'allposts.html', {'posts' : post})
+	categ = Category.objects.all()
+	return render(request, 'allposts.html', {'posts' : post, 'categories' : categ})
 
 
 def post_detail(request, post_id): 
 	post = get_object_or_404(Post, id=post_id)
-	return render(request, 'post_detail.html', {'post' : post, 'media_base' : settings.MEDIA_URL })
+	comment = Comment.objects.filter(post=post)
+	categ = Category.objects.all()
+	return render(request, 'post_detail.html', {'post' : post, 'comments' : comment, "form":CommentForm(), "user":request.user, 'categories' : categ, 'media_base' : settings.MEDIA_URL })
 
 
-def post_add(request):
-	postAdded = False
-	author = request.user
-	if request.method == "POST":
-		form = PostForm(request.POST)
-		if form.is_valid():
-			postAdded = True
-			instance = form.save(commit=False)
-			instance.author = author
-			instance.save()
-		else:
-			print(form.errors)
-		return redirect('/index/')
-            # Profile image supplied? If so, we put it in the new UserProfile.
-          #       if 'image' in request.FILES:
-          #   	post.image = request.FILES['image']
-          #   	# Now we save the model instance!
-        		# post.save()
-          #   	# We can say registration was successful.
-          #   	registered = True			
-	else:
-		form = PostForm()
-	return render(request, 'post_add.html', {'form' : form, 'postAdded' : postAdded })
+
 
 
 
@@ -130,7 +95,8 @@ def poem_add(request):
 
 # -----def sveta_contact - This function displays contacts
 def contact(request):
-	return render(request, 'contact.html', {})
+	categ = Category.objects.all()
+	return render(request, 'contact.html', {'categories' : categ})
 
 
 # -----def  - This functions create users
@@ -182,24 +148,59 @@ def registered(request):
 @login_required
 def user_logout(request):
 	logout(request)
-	return HttpResponseRedirect('/index/')	
+	return HttpResponseRedirect('/index/')
+
+
+def category_add(request):
+    if request.method == "POST":
+        form = CategoryForm(request.POST)
+        if form.is_valid():
+            form.save(commit=True)
+            return index(request)
+    else:
+        form = CategoryForm()
+    return render(request, "category_add.html", {'form' : form})
+
+def post_add(request):
+
+    if request.method == "POST":
+        form = PostForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.author = request.user.id
+            post.created = timezone.now()
+            post.save()
+            return redirect('/post_detail/', post_id=p.id)
+    else:
+        form = PostForm()
+    return render(request, "post_add.html", {"form" : form})
+
+
+def add_comment_to_post(request, post_id):
+    post = get_object_or_404(Post, id=post_id)
+    if request.method == "POST":
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.post = post
+            comment.save()
+            return redirect("/index/", post_id=post.id)
+    else:
+        form = CommentForm()
+    return render(request, "add_comment_to_post.html", {'form' : form})
 
 
 
-
-
-
-# ----  few functioons just for training 
+# few functioons just for training
 
 def results(request, question_id):
-	response = "You're looking at the results of question %s."
-	return HttpResponse(response % question_id)
+    response = "You're looking at the results of question %s."
+    return HttpResponse(response % question_id)
 
 def vote(request, question_id):
-	return HttpResponse("You're voting on question %s." % question_id)
+    return HttpResponse("You're voting on question %s." % question_id)
 
 def test(request):
-	latest_question_list = Post.objects.all()
-	context = {'posts' : latest_question_list}
-	return render(request, 'test.html', context)
-
+    latest_question_list = Post.objects.all()
+    context = {'posts' : latest_question_list}
+    return render(request, 'test.html', context)

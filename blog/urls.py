@@ -20,6 +20,8 @@ urlpatterns = [
 	url(r'^login/$', views.user_login, name='user_login'),
 	# url(r'^restricted/', views.restricted, name='restricted'),
 	url(r'^logout/', views.user_logout, name='logout'),
+	url(r'^post/(?P<post_id>\d+)/comment/$', views.add_comment_to_post, name='add_comment_to_post'),
+	url(r'^category/add/', views.category_add, name='category_add'),
 
 	url(r'^(?P<question_id>\d+)/results/$', views.results, name="results"),
     url(r'^(?P<question_id>\d+)/vote/$', views.vote, name="vote"),

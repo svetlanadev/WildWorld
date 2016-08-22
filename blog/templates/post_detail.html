@@ -6,17 +6,32 @@
 {% endblock %}
 
 {% block content %}
-{% if user.is_authenticate %}
+{% if user.is_authenticated %}
 	<a class="btn btn-default" href="{% url 'blog:post_edit' post_id=post.id%}"><span class="glyphicon glyphicon-pencil"></span></a>
     <h1>Title: {{ post.title }}</h1>
 	<p><a href="/allcategory/">{{ post.category }}</a></p>
-	<p>Дата создания: {{ post.created}}</p>     
+	<p>Дата создания: {{ post.created}}</p>
     <p>
         {% autoescape off %}
             Body: {{ post.body|linebreaks }}
         {% endautoescape %}
     </p>
-    <img src="{{ media_base }}{{  post.image }} "  alt="post_image" width="700" height="394" />	
+    <img src="{{ media_base }}{{  post.image }} "  alt="post_image" width="700" height="394" />
+<!-- Comments -->
+    {% if comments %}
+        <p>Comments:</p>
+    {% endif %}
+    {% for comment in comments %}
+    <div class="comment">
+        <div class="time"><strong>Автор:{{ comment.author }}</strong> | {{ comment.created}}</div>
+        <div class="body">{{ comment.body }}</div>
+    </div>
+    {% empty %}
+        <p>No comments here yet.<br/> You can be the first ;)</p>
+    {% endfor %}
+<!-- Comments form -->
+    <a class="btn btn-default" href="{% url 'blog:add_comment_to_post' post_id=post.id %}">Add comment</a>
+
 {% else %}
     <h1>Title: {{ post.title }}</h1>
 	<p><a href="/allcategory/">{{ post.category }}</a></p>
@@ -27,5 +42,17 @@
         {% endautoescape %}
     </p>
     <img src="{{ media_base }}{{  post.image }} "  alt="post_image" width="700" height="394" />
+    <!-- Comments -->
+    {% if comments %}
+        <p>Comments:</p>
+    {% endif %}
+    {% for comment in comments %}
+    <div class="comment">
+        <div class="time"><strong>Автор:{{ comment.author }}</strong> | {{ comment.created}}</div>
+        <div class="body">{{ comment.body }}</div>
+    </div>
+    {% empty %}
+        <p>No comments here yet.<br/> You can be the first ;)</p>
+    {% endfor %}
 {% endif %}
 {% endblock %}
