@@ -150,30 +150,30 @@ def user_logout(request):
 	logout(request)
 	return HttpResponseRedirect('/index/')
 
+dgdgf
+def category_add(request):
+    if request.method == "POST":
+        form = CategoryForm(request.POST)
+        if form.is_valid():
+            form.save(commit=True)
+            return index(request)
+    else:
+        form = CategoryForm()
+    return render(request, "category_add.html", {'form' : form})
 
-# def category_add(request):
-#     if request.method == "POST":
-#         form = CategoryForm(request.POST)
-#         if form.is_valid():
-#             form.save(commit=True)
-#             return index(request)
-#     else:
-#         form = CategoryForm()
-#     return render(request, "category_add.html", {'form' : form})
+def post_add(request):
 
-# def post_add(request):
-#
-#     if request.method == "POST":
-#         form = PostForm(request.POST)
-#         if form.is_valid():
-#             post = form.save(commit=False)
-#             post.author = request.user.id
-#             post.created = timezone.now()
-#             post.save()
-#             return redirect('/post_detail/', post_id=p.id)
-#     else:
-#         form = PostForm()
-#     return render(request, "post_add.html", {"form" : form})
+    if request.method == "POST":
+        form = PostForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.author = request.user.id
+            post.created = timezone.now()
+            post.save()
+            return redirect('/post_detail/', post_id=p.id)
+    else:
+        form = PostForm()
+    return render(request, "post_add.html", {"form" : form})
 
 
 def add_comment_to_post(request, post_id):
