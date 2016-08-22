@@ -9,7 +9,7 @@ urlpatterns = [
 	url(r'^contact/$', views.contact, name='contact'),
 	url(r'^allposts/(.*)', views.allposts, name='allposts'),
 	url(r'^post/(?P<post_id>[0-9]+)/$', views.post_detail, name = 'post_detail'),
-	url(r'^post/add/$', views.post_add, name='post_add'),
+	# url(r'^post/add/$', views.post_add, name='post_add'),
 	url(r'^post/(?P<post_id>[0-9]+)/edit/$', views.post_edit, name='post_edit'),
 	url(r'^allcategory/(.*)', views.allcategory, name='allcategory'),
 	url(r'^category/(?P<category_id>[0-9]+)/$', views.category, name='category'),
@@ -21,7 +21,7 @@ urlpatterns = [
 	# url(r'^restricted/', views.restricted, name='restricted'),
 	url(r'^logout/', views.user_logout, name='logout'),
 	url(r'^post/(?P<post_id>\d+)/comment/$', views.add_comment_to_post, name='add_comment_to_post'),
-	url(r'^category/add/', views.category_add, name='category_add'),
+	# url(r'^category/add/', views.category_add, name='category_add'),
 
 	url(r'^(?P<question_id>\d+)/results/$', views.results, name="results"),
     url(r'^(?P<question_id>\d+)/vote/$', views.vote, name="vote"),
