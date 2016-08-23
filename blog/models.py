@@ -52,7 +52,7 @@ class Poems(models.Model):
 
 class Comment(models.Model):
 	created = models.DateTimeField(auto_now=True)
-	author = models.ForeignKey(UserProfile)
+	author = models.ForeignKey(User)
 	body = models.TextField()
 	post = models.ForeignKey(Post)
 

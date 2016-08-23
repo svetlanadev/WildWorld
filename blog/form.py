@@ -28,7 +28,8 @@ class UserProfileForm(forms.ModelForm):
 class CommentForm(forms.ModelForm):
 	class Meta:
 		model = Comment
-		exclude = ["post"]
+		fields = ('body',)
+		# exclude = ["post"]
 
 class CategoryForm(forms.ModelForm):
 	class Meta:

@@ -5,7 +5,9 @@ from blog.form import PostForm, PoemForm, UserForm, UserProfileForm, CommentForm
 from django.conf import settings
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-import datetime
+from django.core.paginator import Paginator
+from django.core.paginator import InvalidPage
+from django.core.paginator import EmptyPage
 
 
 class MyStruct(object): 
@@ -31,10 +33,6 @@ def post_detail(request, post_id):
 	comment = Comment.objects.filter(post=post)
 	categ = Category.objects.all()
 	return render(request, 'post_detail.html', {'post' : post, 'comments' : comment, "form":CommentForm(), "user":request.user, 'categories' : categ, 'media_base' : settings.MEDIA_URL })
-
-
-
-
 
 
 def post_edit(request, post_id):
@@ -150,7 +148,7 @@ def user_logout(request):
 	logout(request)
 	return HttpResponseRedirect('/index/')
 
-dgdgf
+
 def category_add(request):
     if request.method == "POST":
         form = CategoryForm(request.POST)
@@ -161,28 +159,30 @@ def category_add(request):
         form = CategoryForm()
     return render(request, "category_add.html", {'form' : form})
 
-def post_add(request):
-
-    if request.method == "POST":
-        form = PostForm(request.POST)
-        if form.is_valid():
-            post = form.save(commit=False)
-            post.author = request.user.id
-            post.created = timezone.now()
-            post.save()
-            return redirect('/post_detail/', post_id=p.id)
-    else:
-        form = PostForm()
-    return render(request, "post_add.html", {"form" : form})
+# def post_add(request):
+#
+#     if request.method == "POST":
+#         form = PostForm(request.POST)
+#         if form.is_valid():
+#             post = form.save(commit=False)
+#             post.author = request.user.id
+#             post.created = timezone.now()
+#             post.save()
+#             return redirect('/post_detail/', post_id=p.id)
+#     else:
+#         form = PostForm()
+#     return render(request, "post_add.html", {"form" : form})
 
 
 def add_comment_to_post(request, post_id):
     post = get_object_or_404(Post, id=post_id)
+    author = request.user
     if request.method == "POST":
         form = CommentForm(request.POST)
         if form.is_valid():
             comment = form.save(commit=False)
             comment.post = post
+            comment.author = author
             comment.save()
             return redirect("/index/", post_id=post.id)
     else:

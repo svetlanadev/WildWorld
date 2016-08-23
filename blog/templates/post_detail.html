@@ -19,7 +19,7 @@
     <img src="{{ media_base }}{{  post.image }} "  alt="post_image" width="700" height="394" />
 <!-- Comments -->
     {% if comments %}
-        <p>Comments:</p>
+        <p>Comments: {{ comments|length }}</p>
     {% endif %}
     {% for comment in comments %}
     <div class="comment">
