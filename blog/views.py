@@ -15,7 +15,7 @@ class MyStruct(object):
 
 
 def index(request):
-	post = Post.objects.order_by('-created')[:3]
+	post = Post.objects.order_by('-created')
 	categ = Category.objects.all()
 	comment = Comment.objects.filter(post=post)
 	poems_variable = Poems.objects.all()
@@ -159,19 +159,18 @@ def category_add(request):
         form = CategoryForm()
     return render(request, "category_add.html", {'form' : form})
 
-# def post_add(request):
-#
-#     if request.method == "POST":
-#         form = PostForm(request.POST)
-#         if form.is_valid():
-#             post = form.save(commit=False)
-#             post.author = request.user.id
-#             post.created = timezone.now()
-#             post.save()
-#             return redirect('/post_detail/', post_id=p.id)
-#     else:
-#         form = PostForm()
-#     return render(request, "post_add.html", {"form" : form})
+def post_add(request):
+    author = request.user
+    if request.method == "POST":
+        form = PostForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.author = author
+            post.save()
+            return redirect('/index/')
+    else:
+        form = PostForm()
+    return render(request, "post_add.html", {"form" : form})
 
 
 def add_comment_to_post(request, post_id):

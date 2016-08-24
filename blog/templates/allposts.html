@@ -14,8 +14,8 @@
 	<div>
 	<li>
 		<h2>{{ p.title }}</a></h2>
-		<p><a href="/allcategory/">{{ p.category }}</a></p>
-	    <p>Дата создания: {{ p.created}}</p>
+		<p><strong>Автор:</strong> {{ p.author}}</p>
+		<p><strong>Путешествие: </strong><a href="/allcategory/">{{ p.category }}</a> / <strong> Дата создания: </strong> {{ p.created}}</p>
 		<p><a class="btn btn-primary btn-lg" href="{% url 'blog:post_detail' p.id %}" role="button">Дізнатись більше..</a></p>
 	</li>
 	</div>

@@ -9,12 +9,13 @@
 <div>
 	<br/>
 	{% if user.is_authenticated %}
-	    <a class="btn btn-primary btn-lg" href="#" role="button">Добавить новый Пост</a>
+	    <a class="btn btn-primary btn-lg" href="{% url 'blog:post_add' %}" role="button">Добавить новый Пост</a>
 		<h3>Последние заметки: </h3>
     	{% for post in posts %}
 	        <p><a class="blog-post-title" href="{% url 'blog:post_detail' post.id %}" role="button">{{ post.title }}</a></p>
-	    	<a href="#">{{ post.category }}</a>
-	    	<p>Дата создания: {{ post.created}}</p>
+	    	<p><strong>Путешествие: </strong><a href="/allcategory/">{{ post.category }}</a></p>
+	        <p><strong>Автор:</strong> {{ post.author}}</p>
+	    	<p><strong>Дата создания:</strong> {{ post.created}}</p>
            	<p>
         	    {% autoescape off %}
         	        {{ post.body }}
@@ -26,8 +27,9 @@
 		<h3>Последние заметки: </h3>
     	{% for post in posts %}	
 	    	<h2 class="blog-post-title">{{ post.title }}</h2>  
-	    	<p><a href="/allcategory/">{{ post.category }}</a></p>
-	    	<p>Дата создания: {{ post.created}}</p>
+	    	<p><strong>Путешествие: </strong><a href="/allcategory/">{{ post.category }}</a></p>
+	        <p><strong>Автор:</strong> {{ post.author}}</p>
+	    	<p><strong>Дата создания:</strong> {{ post.created}}</p>
         	<p>
                 {% autoescape off %}
         	        {{ post.body }}

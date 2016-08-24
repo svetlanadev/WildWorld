@@ -26,7 +26,7 @@ class UserProfile(models.Model):
 
 class Post(models.Model):
 	category = models.ForeignKey(Category)
-	author = models.ForeignKey(UserProfile)
+	author = models.ForeignKey(User)
 	title = models.CharField(max_length=128)
 	body = models.TextField()
 	status = models.CharField(max_length=1, choices=BLOG_ITEM_STATUS, default='0')

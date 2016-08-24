@@ -25,10 +25,10 @@
           <a class="blog-nav-item" href="/login/" >Войти..</a>  --> 
           <a class="blog-nav-item"
             {% if user.is_authenticated %}
-                <p>{{ user.username }}, добро пожаловать в Wild World!</p>
+                <p>{{ user.username }}, добро пожаловать в Блог Путешествий!</p>
                 <a href="/logout/">Выйти..</a>
             {% else %}
-                <p>Добро пожаловать в Wild World!</p>
+                <p>Добро пожаловать в Блог Путешествий!</p>
                 <a href="/register/">Регистрация тут..></a>
                 <a href="/login/">Войти</a>
             {% endif %}  
@@ -45,8 +45,8 @@
     </div> -->
     <div>
       <blockquote class="blockquote-reverse">
-        <p>“The journey of a thousand miles begins with a single step.”</p>
-        <small><cite title="Source Title">Lao Tzu</cite></small>
+        <p>“Дорога учит терпению”</p>
+        <small><cite title="Source Title">Бенджамин Дизраэли</cite></small>
       </blockquote>
     </div>
 
